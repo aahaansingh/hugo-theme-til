@@ -245,4 +245,5 @@ tags
 
 # End of https://www.toptal.com/developers/gitignore/api/linux,macos,vim,visualstudiocode,hugo,node
 
-/exampleSite
+/content/*
+!/content/graph.md
