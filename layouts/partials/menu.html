@@ -2,37 +2,35 @@
 {{- $menuID := .menuID }}
 
 {{- with index site.Menus $menuID }}
-  <nav>
-    <ul class="flex flex-row items-center justify-end space-x-4">
-      {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
-    </ul>
-  </nav>
+<nav>
+  <ul class="flex flex-row items-center justify-end space-x-4">
+    {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
+  </ul>
+</nav>
 {{- end }}
 
 {{- define "partials/inline/menu/walk.html" }}
-  {{- $page := .page }}
-  {{- range .menuEntries }}
-    {{- $attrs := dict "href" .URL }}
-    {{- if $page.IsMenuCurrent .Menu . }}
-      {{- $attrs = merge $attrs (dict "class" "active" "aria-current" "page") }}
-    {{- else if $page.HasMenuCurrent .Menu . }}
-      {{- $attrs = merge $attrs (dict "class" "ancestor" "aria-current" "true") }}
-    {{- end }}
-    {{- $name := .Name }}
-    {{- with .Identifier }}
-      {{- with T . }}
-        {{- $name = . }}
-      {{- end }}
-    {{- end }}
-    <li>
-      <a
-        {{- range $k, $v := $attrs }}
-          {{- with $v }}
-            {{- printf " %s=%q" $k $v | safeHTMLAttr }}
-          {{- end }}
-        {{- end -}}
-        >{{ $name }}</a
-      >
-    </li>
-  {{- end }}
+{{- $page := .page }}
+{{- range .menuEntries }}
+{{- $attrs := dict "href" .URL }}
+{{- $classes := "hover:underline hover:decoration-slate-300 hover:decoration-2 hover:underline-offset-4" }}
+{{- if $page.IsMenuCurrent .Menu . }}
+{{- $classes = printf "%s %s" $classes "active underline decoration-2 underline-offset-4" }}
+{{- $attrs = merge $attrs (dict "aria-current" "page") }}
+{{- else if $page.HasMenuCurrent .Menu . }}
+{{- $classes = printf "%s %s" $classes "ancestor underline decoration-2 underline-offset-4 decoration-slate-300" }}
+{{- $attrs = merge $attrs (dict "aria-current" "true") }}
+{{- end }}
+{{- $attrs = merge $attrs (dict "class" $classes) }}
+{{- $name := .Name }}
+{{- with .Identifier }}
+{{- with T . }}
+{{- $name = . }}
+{{- end }}
+{{- end }}
+<li>
+  <a {{- range $k, $v :=$attrs }} {{- with $v }} {{- printf " %s=%q" $k $v | safeHTMLAttr }} {{- end }} {{- end -}}>{{
+    $name }}</a>
+</li>
+{{- end }}
 {{- end }}

@@ -5,200 +5,160 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'LatoLatinWebBlack';
-  src:
-    url('../fonts/LatoLatin-Black.woff2') format('woff2'),
-    url('../fonts/LatoLatin-Black.woff') format('woff');
+  font-display: swap;
+  font-family: 'AveriaSerifLibre';
   font-style: normal;
-  font-weight: normal;
+  font-weight: 400;
+  src: url('../fonts/averia-serif-libre-v19-latin-regular.woff2') format('woff2');
   text-rendering: optimizeLegibility;
 }
 
 @font-face {
-  font-family: 'LatoLatinWebBlack';
-  src:
-    url('../fonts/LatoLatin-BlackItalic.woff2') format('woff2'),
-    url('../fonts/LatoLatin-BlackItalic.woff') format('woff');
+  font-display: swap;
+  font-family: 'AveriaSerifLibre';
   font-style: italic;
-  font-weight: normal;
+  font-weight: 400;
+  src: url('../fonts/averia-serif-libre-v19-latin-italic.woff2') format('woff2');
   text-rendering: optimizeLegibility;
 }
 
 @font-face {
-  font-family: 'LatoLatinWeb';
-  src:
-    url('../fonts/LatoLatin-Bold.woff2') format('woff2'),
-    url('../fonts/LatoLatin-Bold.woff') format('woff');
+  font-display: swap;
+  font-family: 'AveriaSerifLibre';
   font-style: normal;
-  font-weight: bold;
+  font-weight: 700;
+  src: url('../fonts/averia-serif-libre-v19-latin-700.woff2') format('woff2');
   text-rendering: optimizeLegibility;
 }
 
 @font-face {
-  font-family: 'LatoLatinWeb';
-  src:
-    url('../fonts/LatoLatin-BoldItalic.woff2') format('woff2'),
-    url('../fonts/LatoLatin-BoldItalic.woff') format('woff');
+  font-display: swap;
+  font-family: 'AveriaSerifLibre';
   font-style: italic;
-  font-weight: bold;
+  font-weight: 700;
+  src: url('../fonts/averia-serif-libre-v19-latin-700italic.woff2') format('woff2');
   text-rendering: optimizeLegibility;
 }
 
 @font-face {
-  font-family: 'LatoLatinWebHairline';
-  src:
-    url('../fonts/LatoLatin-Hairline.woff2') format('woff2'),
-    url('../fonts/LatoLatin-Hairline.woff') format('woff');
+  font-display: swap;
+  font-family: 'EBGaramond';
   font-style: normal;
-  font-weight: normal;
-  text-rendering: optimizeLegibility;
+  font-weight: 400;
+  src: url('../fonts/eb-garamond-v32-latin-regular.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: 'LatoLatinWebHairline';
-  src:
-    url('../fonts/LatoLatin-HairlineItalic.woff2') format('woff2'),
-    url('../fonts/LatoLatin-HairlineItalic.woff') format('woff');
+  font-display: swap;
+  font-family: 'EBGaramond';
   font-style: italic;
-  font-weight: normal;
-  text-rendering: optimizeLegibility;
+  font-weight: 400;
+  src: url('../fonts/eb-garamond-v32-latin-italic.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: 'LatoLatinWebHeavy';
-  src:
-    url('../fonts/LatoLatin-Heavy.woff2') format('woff2'),
-    url('../fonts/LatoLatin-Heavy.woff') format('woff');
+  font-display: swap;
+  font-family: 'EBGaramond';
   font-style: normal;
-  font-weight: normal;
-  text-rendering: optimizeLegibility;
+  font-weight: 700;
+  src: url('../fonts/eb-garamond-v32-latin-700.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: 'LatoLatinWebHeavy';
-  src:
-    url('../fonts/LatoLatin-HeavyItalic.woff2') format('woff2'),
-    url('../fonts/LatoLatin-HeavyItalic.woff') format('woff');
+  font-display: swap;
+  font-family: 'EBGaramondBold';
   font-style: italic;
-  font-weight: normal;
-  text-rendering: optimizeLegibility;
+  font-weight: 700;
+  src: url('../fonts/eb-garamond-v32-latin-700italic.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: 'LatoLatinWeb';
-  src:
-    url('../fonts/LatoLatin-Italic.woff2') format('woff2'),
-    url('../fonts/LatoLatin-Italic.woff') format('woff');
+  font-display: swap;
+  font-family: 'LibreBaskerville';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/libre-baskerville-v24-latin-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'LibreBaskerville';
   font-style: italic;
-  font-weight: normal;
-  text-rendering: optimizeLegibility;
+  font-weight: 400;
+  src: url('../fonts/libre-baskerville-v24-latin-italic.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: 'LatoLatinWebLight';
-  src:
-    url('../fonts/LatoLatin-Light.woff2') format('woff2'),
-    url('../fonts/LatoLatin-Light.woff') format('woff');
+  font-display: swap;
+  font-family: 'LibreBaskerville';
   font-style: normal;
-  font-weight: normal;
-  text-rendering: optimizeLegibility;
+  font-weight: 700;
+  src: url('../fonts/libre-baskerville-v24-latin-700.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: 'LatoLatinWebLight';
-  src:
-    url('../fonts/LatoLatin-LightItalic.woff2') format('woff2'),
-    url('../fonts/LatoLatin-LightItalic.woff') format('woff');
+  font-display: swap;
+  font-family: 'LibreBaskerville';
   font-style: italic;
-  font-weight: normal;
-  text-rendering: optimizeLegibility;
-}
-
-@font-face {
-  font-family: 'LatoLatinWebMedium';
-  src:
-    url('../fonts/LatoLatin-Medium.woff2') format('woff2'),
-    url('../fonts/LatoLatin-Medium.woff') format('woff');
-  font-style: normal;
-  font-weight: normal;
-  text-rendering: optimizeLegibility;
-}
-
-@font-face {
-  font-family: 'LatoLatinWeb';
-  src:
-    url('../fonts/LatoLatin-Regular.woff2') format('woff2'),
-    url('../fonts/LatoLatin-Regular.woff') format('woff');
-  font-style: normal;
-  font-weight: normal;
-  text-rendering: optimizeLegibility;
-}
-
-@font-face {
-  font-family: 'LatoLatinWebSemibold';
-  src:
-    url('../fonts/LatoLatin-Semibold.woff2') format('woff2'),
-    url('../fonts/LatoLatin-Semibold.woff') format('woff');
-  font-style: normal;
-  font-weight: normal;
-  text-rendering: optimizeLegibility;
-}
-
-@font-face {
-  font-family: 'LatoLatinWebSemibold';
-  src:
-    url('../fonts/LatoLatin-SemiboldItalic.woff2') format('woff2'),
-    url('../fonts/LatoLatin-SemiboldItalic.woff') format('woff');
-  font-style: italic;
-  font-weight: normal;
-  text-rendering: optimizeLegibility;
-}
-
-@font-face {
-  font-family: 'LatoLatinWebThin';
-  src:
-    url('../fonts/LatoLatin-Thin.woff2') format('woff2'),
-    url('../fonts/LatoLatin-Thin.woff') format('woff');
-  font-style: normal;
-  font-weight: normal;
-  text-rendering: optimizeLegibility;
-}
-
-@font-face {
-  font-family: 'LatoLatinWebThin';
-  src:
-    url('../fonts/LatoLatin-ThinItalic.woff2') format('woff2'),
-    url('../fonts/LatoLatin-ThinItalic.woff') format('woff');
-  font-style: italic;
-  font-weight: normal;
-  text-rendering: optimizeLegibility;
+  font-weight: 700;
+  src: url('../fonts/libre-baskerville-v24-latin-700italic.woff2') format('woff2');
 }
 
 @layer base {
   body {
-    font-family: 'LatoLatinWeb', sans-serif;
+    font-family: 'LibreBaskerville', sans-serif;
     counter-reset: sidenote-counter;
+    background-color: #eff6f9;
   }
 
   nav a:hover {
-    @apply underline decoration-slate-300 decoration-2 underline-offset-4;
+    text-decoration-line: underline;
+    text-decoration-color: #cbd5e1;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
   }
 
   nav a.active,
   nav a.ancestor {
-    @apply underline decoration-2 underline-offset-4;
+    text-decoration-line: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
   }
 
   nav a.ancestor {
-    @apply decoration-slate-300;
+    text-decoration-color: #cbd5e1;
+  }
+
+  nav ul {
+    font-family: 'AveriaSerifLibre', serif;
+    font-size: 1.2em;
+    font-weight: 400;
+  }
+
+  .text-smg {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-family: 'EBGaramond', serif;
+    color: #e06666;
   }
 
   article.main a {
-    @apply !text-blue-800 hover:decoration-2 hover:underline-offset-2;
+    --tw-text-opacity: 1 !important;
+    color: rgb(219 0 0 / var(--tw-text-opacity)) !important;
+  }
+
+  article.main a:hover {
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
   }
 
   article.main .codeblock-meta a {
-    @apply !text-white/70 hover:!text-sky-400;
+    color: rgb(255 255 255 / 0.7) !important;
+  }
+
+  article.main .codeblock-meta a:hover {
+    --tw-text-opacity: 1 !important;
+    color: rgb(56 189 248 / var(--tw-text-opacity)) !important;
   }
 
   article.main figure {
@@ -252,16 +212,16 @@
     counter-increment: sidenote-counter;
   }
 
-  .sidenote-checkbox ~ .sidenote-content {
+  .sidenote-checkbox~.sidenote-content {
     @apply max-lg:sr-only;
   }
 
   .sidenote-checkbox:checked {
-    & ~ .sidenote-content {
+    &~.sidenote-content {
       @apply max-lg:not-sr-only max-lg:left-auto max-lg:float-left max-lg:my-2 max-lg:block max-lg:min-w-full max-lg:pl-4 max-lg:text-sky-600;
     }
 
-    & ~ .sidenote-mark {
+    &~.sidenote-mark {
       @apply no-underline max-lg:text-sky-600;
     }
   }
@@ -293,7 +253,7 @@
 
     @apply motion-safe:transition-all lg:absolute lg:right-0 lg:w-48 lg:cursor-default;
 
-    @media screen(lg) {
+    @screen lg {
       margin-right: calc(-1 * theme(width.48) - 1 * theme(margin.16));
     }
   }
@@ -362,7 +322,11 @@
   }
 
   footer a {
-    @apply underline hover:decoration-2;
+    text-decoration-line: underline;
+  }
+
+  footer a:hover {
+    text-decoration-thickness: 2px;
   }
 
   .network-chart .node {
@@ -371,5 +335,24 @@
 
   .network-chart .edge {
     @apply hidden;
+  }
+
+  .font-semibold {
+    font-family: 'AveriaSerifLibre';
+    font-weight: 700;
+    font-style: italic;
+    color: #db0000;
+    font-size: 1.2em;
+  }
+
+  h1,
+  h2 {
+    font-family: 'AveriaSerifLibre';
+    font-weight: 700;
+    color: #db0000;
+  }
+
+  .h3 {
+    font-style: italic;
   }
 }

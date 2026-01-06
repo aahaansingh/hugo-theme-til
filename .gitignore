@@ -247,3 +247,4 @@ tags
 
 /content/*
 !/content/graph.md
+.vscode
