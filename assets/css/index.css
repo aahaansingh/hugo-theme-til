@@ -3221,3 +3221,42 @@ h1,
     padding: 1.5rem;
   }
 }
+/* Fallback for manual style updates */
+h1, h2 {
+  color: #db0000 !important;
+}
+h3 {
+  font-style: italic !important;
+}
+article.main a {
+  color: inherit !important;
+}
+.text-\[\#db0000\] {
+  color: #db0000 !important;
+}
+
+/* Additional refinements for home page titles */
+.font-\[\'AveriaSerifLibre\'\] {
+  font-family: 'AveriaSerifLibre', serif !important;
+}
+.text-inherit {
+  color: inherit !important;
+}
+
+/* Final color and font overrides for home page titles */
+.text-black {
+  color: #000000 !important;
+}
+
+/* Final font and style standardization */
+.font-\[\'LibreBaskerville\'\] {
+  font-family: 'LibreBaskerville', serif !important;
+}
+.not-italic {
+  font-style: normal !important;
+}
+
+/* Lighter black for titles */
+.text-\[\#1e293b\] {
+  color: #1e293b !important;
+}

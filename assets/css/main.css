@@ -143,8 +143,7 @@
   }
 
   article.main a {
-    --tw-text-opacity: 1 !important;
-    color: rgb(219 0 0 / var(--tw-text-opacity)) !important;
+    color: inherit !important;
   }
 
   article.main a:hover {
@@ -318,7 +317,7 @@
   }
 
   article.main .diagram-meta a {
-    @apply !text-gray-500 transition-colors hover:!text-sky-400;
+    @apply !text-gray-500 transition-colors hover: !text-sky-400;
   }
 
   footer a {
@@ -352,7 +351,7 @@
     color: #db0000;
   }
 
-  .h3 {
-    font-style: italic;
+  h3 {
+    @apply italic;
   }
 }
