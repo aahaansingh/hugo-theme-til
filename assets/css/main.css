@@ -32,7 +32,10 @@
     background-color: #faf1e8;
   }
 
-  nav a.active,
+  nav a.active {
+    color: #550527;
+  }
+
   a:hover {
     color: #5d7263;
   }
@@ -53,7 +56,7 @@
     font-size: 0.875rem;
     line-height: 1.25rem;
     font-family: 'SourceSerif4', serif;
-    color: #54875f;
+    color: #5d7263;
   }
 
   article.main a {
@@ -109,11 +112,13 @@
   }
 
   a.taxonomy .count {
-    @apply relative -top-px rounded bg-slate-300 px-[3px] py-[1px] text-[10px] font-normal tabular-nums text-slate-500;
+    @apply relative -top-px rounded px-[3px] py-[1px] text-[10px] font-normal tabular-nums text-slate-500;
+    background: #D5C9BD;
   }
 
   a.taxonomy:hover .count {
-    @apply bg-slate-400 text-slate-600;
+    @apply text-slate-600;
+    background: #C9BEB3;
   }
 
   .pagination {

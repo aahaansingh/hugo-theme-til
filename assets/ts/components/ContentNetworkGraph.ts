@@ -7,10 +7,10 @@ const NETWORK_OPTIONS: Options = {
   nodes: {
     shape: 'dot',
     color: {
-      background: '#e6d9cc',
+      background: '#5d7263',
       border: '#f7f4f0',
       hover: {
-        background: '#EBE5DC',
+        background: '#54875f',
         border: '#54875f'
       }
     },
@@ -147,7 +147,7 @@ export default class ContentNetworkGraph extends HTMLElement {
       'rounded-sm',
       'block',
       'border-[#f7f4f0]',
-      'bg-[#faf1e8]'
+      'bg-[#e6d9cc]'
     );
     this._networkEl = document.createElement('div');
     this._messageEl = document.createElement('div');
@@ -239,7 +239,7 @@ export default class ContentNetworkGraph extends HTMLElement {
       'space-x-2',
       'items-center',
       'absolute',
-      'bg-white',
+      'bg-[#faf1e8]',
       'w-full',
       'h-full',
       'text-lg',
@@ -277,9 +277,10 @@ export default class ContentNetworkGraph extends HTMLElement {
 
     const expandBtn = document.createElement('button');
     expandBtn.classList.add(
-      'bg-white',
       'border',
       'rounded-sm',
+      'border-[#f7f4f0]',
+      'bg-[#EBE5DC]',
       'p-1',
       'opacity-60',
       'hover:opacity-100'
