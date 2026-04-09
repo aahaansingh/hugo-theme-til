@@ -6,11 +6,11 @@
 </head>
 
 <body>
-  <div class="container mx-auto flex max-w-prose flex-col space-y-10 p-4 md:p-6">
+  <div class="mx-auto flex max-w-[85ch] flex-col space-y-10 p-4 md:p-6">
     <header class="flex flex-row items-center justify-between text-[clamp(0.7rem,3vw,1rem)]">
       {{ partial "header.html" . }}
     </header>
-    <main class="prose prose-slate relative md:prose-lg prose-h1:text-[2em]" id="maincontent">
+    <main class="prose prose-slate max-w-none relative md:prose-lg prose-h1:text-[2em]" id="maincontent">
       {{ block "main" . }}{{ end }}
     </main>
     <footer class="mt-20 border-t border-neutral-100 pt-2 text-xs">
@@ -24,7 +24,7 @@
     mermaid.initialize({
       startOnLoad: true,
       theme: 'neutral',
-      fontFamily: "'LatoLatinWeb', sans-serif"
+      fontFamily: "'SourceSerif4', sans-serif"
     });
   </script>
   {{ end }}

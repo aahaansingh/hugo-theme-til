@@ -248,3 +248,5 @@ tags
 /content/*
 !/content/graph.md
 .vscode
+.gitignore
+STYLE_AND_CLASS_INDEX.md

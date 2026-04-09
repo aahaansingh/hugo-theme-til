@@ -2,20 +2,21 @@ import { IdType, Network, NodeOptions, type Options } from 'vis-network';
 import Graph from '../lib/Graph';
 import { GraphData } from '../lib/types';
 
+/** Palette: hex values already used in assets/css/main.css and list partials. */
 const NETWORK_OPTIONS: Options = {
   nodes: {
     shape: 'dot',
     color: {
-      background: '#404040',
-      border: '#404040',
+      background: '#e6d9cc',
+      border: '#f7f4f0',
       hover: {
-        background: '#3b82f6',
-        border: '#2563eb'
+        background: '#EBE5DC',
+        border: '#54875f'
       }
     },
     font: {
-      face: "'LatoLatinWeb', sans-serif",
-      color: '#0f172a',
+      face: "'SourceSerif4', serif",
+      color: '#1e293b',
       size: 11
     },
     scaling: {
@@ -25,8 +26,8 @@ const NETWORK_OPTIONS: Options = {
   },
   edges: {
     color: {
-      color: '#d4d4d4',
-      hover: '#3b82f6'
+      color: '#5d7263',
+      hover: '#54875f'
     },
     hoverWidth: 0,
     smooth: false
@@ -43,11 +44,11 @@ const NETWORK_OPTIONS: Options = {
 
 const FADED_NODE_OPTIONS: NodeOptions = {
   color: {
-    background: '#d4d4d4',
-    border: '#d4d4d4'
+    background: '#f7f4f0',
+    border: '#e6d9cc'
   },
   font: {
-    color: '#d4d4d4'
+    color: '#5d7263'
   }
 };
 
@@ -143,10 +144,10 @@ export default class ContentNetworkGraph extends HTMLElement {
     this.classList.add(
       'relative',
       'border',
-      'border-neutral-200',
       'rounded-sm',
       'block',
-      'bg-white'
+      'border-[#f7f4f0]',
+      'bg-[#faf1e8]'
     );
     this._networkEl = document.createElement('div');
     this._messageEl = document.createElement('div');

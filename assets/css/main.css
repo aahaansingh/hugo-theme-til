@@ -6,144 +6,59 @@
 
 @font-face {
   font-display: swap;
-  font-family: 'AveriaSerifLibre';
+  font-family: 'SourceSerif4';
   font-style: normal;
-  font-weight: 400;
-  src: url('../fonts/averia-serif-libre-v19-latin-regular.woff2') format('woff2');
-  text-rendering: optimizeLegibility;
+  src: url('../fonts/SourceSerif4-VariableFont.woff2') format('woff2');
 }
 
 @font-face {
   font-display: swap;
-  font-family: 'AveriaSerifLibre';
+  font-family: 'SourceSerif4';
   font-style: italic;
-  font-weight: 400;
-  src: url('../fonts/averia-serif-libre-v19-latin-italic.woff2') format('woff2');
-  text-rendering: optimizeLegibility;
+  src: url('../fonts/SourceSerif4-Italic-VariableFont.woff2') format('woff2');
 }
 
 @font-face {
   font-display: swap;
-  font-family: 'AveriaSerifLibre';
-  font-style: normal;
-  font-weight: 700;
-  src: url('../fonts/averia-serif-libre-v19-latin-700.woff2') format('woff2');
-  text-rendering: optimizeLegibility;
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'AveriaSerifLibre';
+  font-family: 'YoungSerif';
   font-style: italic;
-  font-weight: 700;
-  src: url('../fonts/averia-serif-libre-v19-latin-700italic.woff2') format('woff2');
-  text-rendering: optimizeLegibility;
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'EBGaramond';
-  font-style: normal;
-  font-weight: 400;
-  src: url('../fonts/eb-garamond-v32-latin-regular.woff2') format('woff2');
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'EBGaramond';
-  font-style: italic;
-  font-weight: 400;
-  src: url('../fonts/eb-garamond-v32-latin-italic.woff2') format('woff2');
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'EBGaramond';
-  font-style: normal;
-  font-weight: 700;
-  src: url('../fonts/eb-garamond-v32-latin-700.woff2') format('woff2');
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'EBGaramondBold';
-  font-style: italic;
-  font-weight: 700;
-  src: url('../fonts/eb-garamond-v32-latin-700italic.woff2') format('woff2');
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'LibreBaskerville';
-  font-style: normal;
-  font-weight: 400;
-  src: url('../fonts/libre-baskerville-v24-latin-regular.woff2') format('woff2');
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'LibreBaskerville';
-  font-style: italic;
-  font-weight: 400;
-  src: url('../fonts/libre-baskerville-v24-latin-italic.woff2') format('woff2');
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'LibreBaskerville';
-  font-style: normal;
-  font-weight: 700;
-  src: url('../fonts/libre-baskerville-v24-latin-700.woff2') format('woff2');
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'LibreBaskerville';
-  font-style: italic;
-  font-weight: 700;
-  src: url('../fonts/libre-baskerville-v24-latin-700italic.woff2') format('woff2');
+  src: url('../fonts/YoungSerif-Regular.woff2') format('woff2');
 }
 
 @layer base {
   body {
-    font-family: 'LibreBaskerville', sans-serif;
+    font-family: 'SourceSerif4', sans-serif;
     counter-reset: sidenote-counter;
-    background-color: #eff6f9;
-  }
-
-  nav a:hover {
-    text-decoration-line: underline;
-    text-decoration-color: #cbd5e1;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 4px;
+    background-color: #faf1e8;
   }
 
   nav a.active,
-  nav a.ancestor {
-    text-decoration-line: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 4px;
+  a:hover {
+    color: #5d7263;
   }
 
+  /* nav a.active, */
   nav a.ancestor {
-    text-decoration-color: #cbd5e1;
+    color: #000000;
   }
 
   nav ul {
-    font-family: 'AveriaSerifLibre', serif;
+    font-family: 'SourceSerif4', serif;
     font-size: 1.2em;
-    font-weight: 400;
+    font-weight: 500;
   }
 
+  /* formerly EBGaramond */
   .text-smg {
     font-size: 0.875rem;
     line-height: 1.25rem;
-    font-family: 'EBGaramond', serif;
-    color: #e06666;
+    font-family: 'SourceSerif4', serif;
+    color: #54875f;
   }
 
   article.main a {
-    color: inherit !important;
+    color: #54875f !important;
+    text-decoration-line: none;
   }
 
   article.main a:hover {
@@ -152,17 +67,18 @@
   }
 
   article.main .codeblock-meta a {
-    color: rgb(255 255 255 / 0.7) !important;
+    color: #e6d9cc !important;
   }
 
   article.main .codeblock-meta a:hover {
     --tw-text-opacity: 1 !important;
-    color: rgb(56 189 248 / var(--tw-text-opacity)) !important;
+    color: rgb(84 135 95 / var(--tw-text-opacity)) !important;
   }
 
   article.main figure {
     img {
       @apply mb-0 border p-1;
+      border:#e6d9cc
     }
 
     figcaption {
@@ -179,11 +95,17 @@
   }
 
   a.taxonomy {
-    @apply whitespace-nowrap rounded-sm border border-slate-200 bg-slate-100 p-1 text-sm font-semibold lowercase no-underline;
+    @apply inline-block whitespace-nowrap rounded-sm border border-slate-200 bg-slate-100 p-1 text-sm font-semibold lowercase no-underline;
+    /* Horizontal gutter between chips only (avoids extra vertical space in the row). */
+    @apply mx-0.5;
+    border:#f7f4f0;
+    background:#e6d9cc;
+    color:#000000;
   }
 
   a.taxonomy:hover {
-    @apply border-slate-300 bg-slate-200;
+    border:#f7f4f0;
+    background:#EBE5DC;
   }
 
   a.taxonomy .count {
@@ -217,22 +139,22 @@
 
   .sidenote-checkbox:checked {
     &~.sidenote-content {
-      @apply max-lg:not-sr-only max-lg:left-auto max-lg:float-left max-lg:my-2 max-lg:block max-lg:min-w-full max-lg:pl-4 max-lg:text-sky-600;
+      @apply max-lg:not-sr-only max-lg:left-auto max-lg:float-left max-lg:my-2 max-lg:block max-lg:min-w-full max-lg:pl-4 max-lg:text-[#54875f];
     }
 
     &~.sidenote-mark {
-      @apply no-underline max-lg:text-sky-600;
+      @apply no-underline max-lg:text-[#54875f];
     }
   }
 
   .sidenote:active,
   .sidenote:active .sidenote-content {
-    @apply text-sky-600;
+    @apply text-[#54875f];
   }
 
   .sidenote:hover .sidenote-mark::after,
   .sidenote:hover .sidenote-content::before {
-    @apply text-sky-600;
+    @apply text-[#54875f];
   }
 
   .sidenote-mark {
@@ -241,7 +163,7 @@
       content: counter(sidenote-counter);
     }
 
-    @apply motion-safe:transition-all max-lg:cursor-pointer max-lg:underline max-lg:decoration-sky-600 max-lg:decoration-dotted max-lg:decoration-2 max-lg:underline-offset-4;
+    @apply motion-safe:transition-all max-lg:cursor-pointer max-lg:underline max-lg:decoration-[#54875f] max-lg:decoration-dotted max-lg:decoration-2 max-lg:underline-offset-4;
   }
 
   .sidenote-content {
@@ -258,13 +180,14 @@
   }
 
   .footnote-ref {
-    @apply align-super text-xs font-semibold motion-safe:transition-all max-lg:cursor-pointer max-lg:underline max-lg:decoration-sky-600 max-lg:decoration-dotted max-lg:decoration-2 max-lg:underline-offset-4;
+    @apply align-super text-xs font-semibold motion-safe:transition-all max-lg:cursor-pointer max-lg:underline max-lg:decoration-[#54875f] max-lg:decoration-dotted max-lg:decoration-2 max-lg:underline-offset-4;
 
     &:hover {
       @apply max-lg:underline-offset-4;
     }
   }
 
+  /* Alter admonition styles if they actually become a liability */
   .admonition {
     @apply my-6 rounded border bg-slate-100 py-4 pl-2 pr-4 text-slate-800 shadow-sm;
 
@@ -303,7 +226,7 @@
 
   .codeblock pre {
     @apply overflow-x-scroll rounded p-2 text-sm;
-    color: #c0caf5;
+    color: #54875f;
     background-color: #1a1b26;
   }
 
@@ -316,9 +239,9 @@
     @apply bg-[#2f3248];
   }
 
-  article.main .diagram-meta a {
-    @apply !text-gray-500 transition-colors hover: !text-sky-400;
-  }
+  /* article.main .diagram-meta a {
+    @apply !text-gray-500 transition-colors hover:!text-sky-400;
+  } */
 
   footer a {
     text-decoration-line: underline;
@@ -336,19 +259,25 @@
     @apply hidden;
   }
 
-  .font-semibold {
-    font-family: 'AveriaSerifLibre';
+  .site-title {
+    font-family: 'YoungSerif';
     font-weight: 700;
     font-style: italic;
-    color: #db0000;
+    color: #550527;
     font-size: 1.2em;
   }
 
-  h1,
-  h2 {
-    font-family: 'AveriaSerifLibre';
+  h1 {
+    font-family: 'YoungSerif';
     font-weight: 700;
-    color: #db0000;
+    color: #550527;
+  }
+
+  h2 {
+    font-family: 'SourceSerif4';
+    font-weight: 650 !important;
+    font-variant:small-caps;
+    color: #5d7263;
   }
 
   h3 {

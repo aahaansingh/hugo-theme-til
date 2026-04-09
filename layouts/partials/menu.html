@@ -13,12 +13,12 @@
 {{- $page := .page }}
 {{- range .menuEntries }}
 {{- $attrs := dict "href" .URL }}
-{{- $classes := "hover:underline hover:decoration-slate-300 hover:decoration-2 hover:underline-offset-4" }}
+{{- $classes := "" }}
 {{- if $page.IsMenuCurrent .Menu . }}
-{{- $classes = printf "%s %s" $classes "active underline decoration-2 underline-offset-4" }}
+{{- $classes = printf "%s %s" $classes "active" }}
 {{- $attrs = merge $attrs (dict "aria-current" "page") }}
 {{- else if $page.HasMenuCurrent .Menu . }}
-{{- $classes = printf "%s %s" $classes "ancestor underline decoration-2 underline-offset-4 decoration-slate-300" }}
+{{- $classes = printf "%s %s" $classes "ancestor" }}
 {{- $attrs = merge $attrs (dict "aria-current" "true") }}
 {{- end }}
 {{- $attrs = merge $attrs (dict "class" $classes) }}

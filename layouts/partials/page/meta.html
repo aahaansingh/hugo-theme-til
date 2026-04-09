@@ -23,7 +23,7 @@
         <span>Categories</span>
       </h2>
 
-      <ul class="ml-6 flex flex-row flex-wrap items-center space-x-2">
+      <ul class="ml-6 flex flex-row flex-wrap items-center gap-2">
         {{- range . }}
           <li>
             <a href="{{ .RelPermalink }}" class="taxonomy category">{{ .Name }}</a>
@@ -40,7 +40,7 @@
         <span>Tags</span>
       </h2>
 
-      <ul class="not-prose ml-6 flex flex-row flex-wrap items-center space-x-2">
+      <ul class="not-prose ml-6 flex flex-row flex-wrap items-center gap-2">
         {{- range . }}
           <li>
             <a href="{{ .RelPermalink }}" class="taxonomy tag">{{ .Name }}</a>
