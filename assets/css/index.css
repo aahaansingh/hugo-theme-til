@@ -1127,6 +1127,7 @@ nav ul {
 article.main a {
   color: #54875f !important;
   text-decoration-line: none;
+  border-inline-start-color: #5d7263 !important;
 }
 
 article.main a:hover {
@@ -1582,6 +1583,16 @@ h2 {
 
 h3 {
   font-style: italic;
+}
+
+main#maincontent.prose.prose-slate {
+  --tw-prose-bullets: #5d7263;
+  --tw-prose-counters: #5d7263;
+}
+
+main#maincontent.prose.prose-slate
+    :where(blockquote):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+  border-inline-start-width: 0;
 }
 
 .prose {
