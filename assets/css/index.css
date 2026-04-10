@@ -1616,7 +1616,7 @@ main#maincontent.prose.prose-slate
   font-size: 1.0625em;
   font-weight: 550;
   line-height: 1.55;
-  color: #5d7263;
+  color: #2f3932;
 }
 
 /* In-content subheading before lead paragraph (same column as title) */
@@ -1637,6 +1637,59 @@ main#maincontent.prose.prose-slate
 
 .post-hero__lead :where(h2, h3, h4, h5, h6) + p {
   margin-top: 0.65em;
+}
+
+/*
+   * Hero lead: only the sidenote *body* (.sidenote-content) and the superscript (::after) use
+   * body-like sizing/color. The marked phrase lives in .sidenote-mark and must match the lead <p>.
+   */
+
+.post-hero__lead .sidenote {
+  color: inherit;
+}
+
+.post-hero__lead .sidenote-mark {
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
+.post-hero__lead .sidenote-mark::after {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.post-hero__lead .sidenote-content {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+  color: #334155;
+}
+
+.post-hero__lead .sidenote:hover .sidenote-mark::after,
+  .post-hero__lead .sidenote:hover .sidenote-content::before {
+  color: #54875f;
+}
+
+.post-hero__lead .sidenote:active {
+  color: inherit;
+}
+
+.post-hero__lead .sidenote:active .sidenote-content {
+  color: #54875f;
+}
+
+@media not all and (min-width: 1024px) {
+  .post-hero__lead .sidenote-checkbox:checked ~ .sidenote-content {
+    color: #54875f;
+  }
+
+  .post-hero__lead .sidenote-checkbox:checked ~ .sidenote-mark {
+    color: #54875f;
+  }
 }
 
 @media (min-width: 768px) {
