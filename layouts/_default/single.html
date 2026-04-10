@@ -1,18 +1,28 @@
 {{ define "main" }}
   {{- $imgResources := .Resources.ByType "image" -}}
-  <article class="main">
-    <header>
-      <h1 class="!mb-1">{{ .Title | title }}</h1>
+  {{- $mag := partial "posts/magazine-lead-split" . -}}
+  {{- $split := index $mag "useMagazine" -}}
+  {{- $leadHTML := index $mag "lead" -}}
+  {{- $restContent := index $mag "rest" -}}
 
-      {{- with .Date }}
-        {{- $dateMachine := . | time.Format "2006-01-02T15:04:05-07:00" -}}
-        {{- $dateHuman := . | time.Format (default ":date_long" site.Params.dateFormat) -}}
-        <div class="flex flex-row items-center space-x-4">
-          <time class="text-smg italic opacity-80" datetime="{{ $dateMachine }}"
-            >{{ $dateHuman }}</time
-          >
+  <article class="main{{ if $split }} post--magazine{{ end }}">
+    {{- if $split -}}
+      <div class="post-hero not-prose mb-6 md:mb-8">
+        <div class="post-hero__lead">
+          {{ $leadHTML | safeHTML }}
         </div>
-      {{- end }}
+        <div class="post-hero__rule" aria-hidden="true"></div>
+        <header class="post-hero__head">
+          <h1 class="!mb-1 mt-0">{{ .Title | title }}</h1>
+          {{- with .Date }}
+            {{- $dateMachine := . | time.Format "2006-01-02T15:04:05-07:00" -}}
+            {{- $dateHuman := . | time.Format (default ":date_long" site.Params.dateFormat) -}}
+            <div class="flex w-full flex-row items-center justify-start md:justify-end">
+              <time class="text-smg italic opacity-80" datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+            </div>
+          {{- end -}}
+        </header>
+      </div>
 
       {{- with $imgResources.GetMatch "{*feature*,*cover*}" }}
         <figure class="feature-image !mb-20 block text-center">
@@ -23,13 +33,45 @@
             alt="{{ $.Params.FeatureCaption }}"
           />
           {{- with $.Params.FeatureCaption }}
-            <figcaption class="text-xs italic">{{ . |  markdownify }}</figcaption>
+            <figcaption class="text-xs italic">{{ . | markdownify }}</figcaption>
           {{- end }}
         </figure>
       {{- end }}
-    </header>
 
-    {{ .Content }}
+      <div class="post-body">
+        {{ $restContent | safeHTML }}
+      </div>
+    {{- else -}}
+      <header>
+        <h1 class="!mb-1">{{ .Title | title }}</h1>
+
+        {{- with .Date }}
+          {{- $dateMachine := . | time.Format "2006-01-02T15:04:05-07:00" -}}
+          {{- $dateHuman := . | time.Format (default ":date_long" site.Params.dateFormat) -}}
+          <div class="flex flex-row items-center space-x-4">
+            <time class="text-smg italic opacity-80" datetime="{{ $dateMachine }}"
+              >{{ $dateHuman }}</time
+            >
+          </div>
+        {{- end }}
+
+        {{- with $imgResources.GetMatch "{*feature*,*cover*}" }}
+          <figure class="feature-image !mb-20 block text-center">
+            <img
+              src="{{ .RelPermalink }}"
+              width="{{ .Width }}"
+              height="{{ .Height }}"
+              alt="{{ $.Params.FeatureCaption }}"
+            />
+            {{- with $.Params.FeatureCaption }}
+              <figcaption class="text-xs italic">{{ . | markdownify }}</figcaption>
+            {{- end }}
+          </figure>
+        {{- end }}
+      </header>
+
+      {{ .Content }}
+    {{- end -}}
   </article>
 
   {{- if or (eq .Section "posts") (eq .Section "notes") }}

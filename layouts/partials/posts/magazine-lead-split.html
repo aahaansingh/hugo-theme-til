@@ -1,0 +1,25 @@
+{{- /*
+  Magazine hero lead peel (posts only):
+  A) Leading h2–h6 + first <p> (optional heading, then opening paragraph)
+  B) Else leading <p> only
+  Else: useMagazine false, rest = full content, lead empty.
+*/ -}}
+{{- $lead := "" -}}
+{{- $rest := .Content -}}
+{{- $useMagazine := false -}}
+{{- if eq .Section "posts" -}}
+  {{- $reHeadThenP := `(?s)^\s*(<h[2-6][^>]*>.*?</h[2-6]>)\s*(<p(\s[^>]*)?>.*?</p>)` -}}
+  {{- $reFirstP := `(?s)^\s*<p(\s[^>]*)?>.*?</p>` -}}
+  {{- with findRE $reHeadThenP .Content 1 -}}
+    {{- $lead = index . 0 -}}
+    {{- $rest = replaceRE $reHeadThenP "" $.Content 1 -}}
+    {{- $useMagazine = true -}}
+  {{- else -}}
+    {{- with findRE $reFirstP .Content 1 -}}
+      {{- $lead = index . 0 -}}
+      {{- $rest = replaceRE $reFirstP "" $.Content 1 -}}
+      {{- $useMagazine = true -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return dict "useMagazine" $useMagazine "lead" $lead "rest" $rest -}}
