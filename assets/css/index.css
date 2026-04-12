@@ -1090,7 +1090,8 @@ video {
 }
 
 body {
-  font-family: 'SourceSerif4', sans-serif;
+  /* serif fallback avoids system sans when SourceSerif4 fails to load (phone vs desktop engines). */
+  font-family: 'SourceSerif4', serif;
   counter-reset: sidenote-counter;
   background-color: #faf1e8;
 }
@@ -1562,7 +1563,7 @@ footer a:hover {
 }
 
 .site-title {
-  font-family: 'YoungSerif';
+  font-family: 'YoungSerif', serif;
   font-weight: 700;
   font-style: italic;
   color: #550527;
@@ -1570,13 +1571,13 @@ footer a:hover {
 }
 
 h1 {
-  font-family: 'YoungSerif';
+  font-family: 'YoungSerif', serif;
   font-weight: 700;
   color: #550527;
 }
 
 h2 {
-  font-family: 'SourceSerif4';
+  font-family: 'SourceSerif4', serif;
   font-weight: 650 !important;
   font-variant:small-caps;
   color: #5d7263;
@@ -2904,7 +2905,21 @@ main#maincontent.prose.prose-slate
 
   font-family: 'YoungSerif';
 
+  font-style: normal;
+
+  font-weight: 400;
+
+  src: url('../fonts/YoungSerif-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+
+  font-family: 'YoungSerif';
+
   font-style: italic;
+
+  font-weight: 400;
 
   src: url('../fonts/YoungSerif-Regular.woff2') format('woff2');
 }
@@ -3219,6 +3234,10 @@ main#maincontent.prose.prose-slate
 
   .md\:inline-block {
     display: inline-block;
+  }
+
+  .md\:flex {
+    display: flex;
   }
 
   .md\:justify-end {
