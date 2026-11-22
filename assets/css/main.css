@@ -8,6 +8,7 @@
   font-display: swap;
   font-family: 'SourceSerif4';
   font-style: normal;
+  font-weight: 200 900;
   src: url('../fonts/SourceSerif4-VariableFont.woff2') format('woff2');
 }
 
@@ -15,6 +16,7 @@
   font-display: swap;
   font-family: 'SourceSerif4';
   font-style: italic;
+  font-weight: 200 900;
   src: url('../fonts/SourceSerif4-Italic-VariableFont.woff2') format('woff2');
 }
 
@@ -35,6 +37,10 @@
 }
 
 @layer base {
+  html {
+    font-size: clamp(16px, 0.35vw + 14.5px, 19px);
+  }
+
   body {
     /* serif fallback avoids system sans when SourceSerif4 fails to load (phone vs desktop engines). */
     font-family: 'SourceSerif4', serif;

@@ -4,7 +4,7 @@
     <li class="mb-6">
       <article class="flex flex-col space-y-1">
         <header>
-          <h3 class="text-lg leading-none">
+          <h3 class="text-xl leading-none">
             <a href="{{ .RelPermalink }}"
               class="font-bold not-italic text-[#1e293b]">{{
               .Title
@@ -12,9 +12,9 @@
           </h3>
           {{- $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" -}}
           {{- $dateHuman := .Date | time.Format (default ":date_long" .Site.Params.dateFormat) -}}
-          <time class="text-sm italic leading-5 opacity-80" datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+          <time class="text-base italic leading-5 opacity-80" datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
         </header>
-        <div class="text-sm">
+        <div class="text-base">
           {{- $content := .Content -}}
           {{- $noHeaders := replaceRE `(?s)<h3.*?>.*?</h3>` `` $content -}}
             {{- $text := $noHeaders | plainify -}}

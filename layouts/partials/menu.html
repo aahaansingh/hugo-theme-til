@@ -3,7 +3,7 @@
 
 {{- with index site.Menus $menuID }}
 <nav>
-  <ul class="flex flex-row items-center justify-end space-x-4">
+  <ul class="flex flex-row items-center justify-end gap-x-[clamp(0.6rem,2vw,1.25rem)]">
     {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
   </ul>
 </nav>

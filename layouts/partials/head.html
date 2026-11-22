@@ -32,6 +32,8 @@
 {{- range .AlternativeOutputFormats -}}
   <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}" />
 {{- end }}
+<link rel="preload" href="{{ "fonts/SourceSerif4-VariableFont.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ "fonts/YoungSerif-Regular.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
 {{ partialCached "head/css" . }}
 {{ partialCached "head/js" . }}
 {{- if or .Params.math site.Params.math }}
