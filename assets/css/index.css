@@ -1097,7 +1097,7 @@ body {
   /* serif fallback avoids system sans when SourceSerif4 fails to load (phone vs desktop engines). */
   font-family: 'SourceSerif4', serif;
   counter-reset: sidenote-counter;
-  background-color: #faf1e8;
+  background-color: #ceeadf;
 }
 
 nav a.active {
@@ -1126,19 +1126,19 @@ nav ul {
   font-size: 0.875rem;
   line-height: 1.25rem;
   font-family: 'SourceSerif4', serif;
-  color: #5d7263;
+  color: #4a5e50;
 }
 
 article.main a {
-  color: #54875f !important;
+  color: #3a6845 !important;
   text-decoration-line: none;
-  border-inline-start-color: #5d7263 !important;
+  border-inline-start-color: #4a5e50 !important;
 }
 
 article.main a:hover {
   text-decoration-thickness: 2px;
   text-underline-offset: 2px;
-  color:#A7BCA4 !important;
+  color:#4a9a84 !important;
 }
 
 article.main .codeblock-meta a {
@@ -1161,7 +1161,7 @@ article.main figure {
     padding: 0.25rem;
   }
   img {
-    border:#e6d9cc
+    border:#b7d1c7
   }
   figcaption {
     margin-top: 0.25rem;
@@ -1200,13 +1200,13 @@ a.taxonomy {
   /* Horizontal gutter between chips only (avoids extra vertical space in the row). */
   margin-left: 0.125rem;
   margin-right: 0.125rem;
-  border:#f7f4f0;
-  background:#e6d9cc;
+  border:#d8e5e0;
+  background:#b7d1c7;
   color:#000000;
 }
 
 a.taxonomy:hover {
-  border:#f7f4f0;
+  border:#d8e5e0;
   background:#EBE5DC;
 }
 
@@ -1224,7 +1224,7 @@ a.taxonomy .count {
   font-variant-numeric: var(--tw-ordinal) var(--tw-slashed-zero) var(--tw-numeric-figure) var(--tw-numeric-spacing) var(--tw-numeric-fraction);
   --tw-text-opacity: 1;
   color: rgb(100 116 139 / var(--tw-text-opacity));
-  background: #D5C9BD;
+  background: #c8dcd3;
 }
 
 a.taxonomy:hover .count {
@@ -1325,7 +1325,7 @@ a.taxonomy:hover .count {
   @media not all and (min-width: 1024px) {
     &~.sidenote-content {
       --tw-text-opacity: 1;
-      color: rgb(84 135 95 / var(--tw-text-opacity));
+      color: rgb(58 104 69 / var(--tw-text-opacity));
     }
   }
   &~.sidenote-mark {
@@ -1334,7 +1334,7 @@ a.taxonomy:hover .count {
   @media not all and (min-width: 1024px) {
     &~.sidenote-mark {
       --tw-text-opacity: 1;
-      color: rgb(84 135 95 / var(--tw-text-opacity));
+      color: rgb(58 104 69 / var(--tw-text-opacity));
     }
   }
 }
@@ -1342,13 +1342,13 @@ a.taxonomy:hover .count {
 .sidenote:active,
   .sidenote:active .sidenote-content {
   --tw-text-opacity: 1;
-  color: rgb(84 135 95 / var(--tw-text-opacity));
+  color: rgb(58 104 69 / var(--tw-text-opacity));
 }
 
 .sidenote:hover .sidenote-mark::after,
   .sidenote:hover .sidenote-content::before {
   --tw-text-opacity: 1;
-  color: rgb(84 135 95 / var(--tw-text-opacity));
+  color: rgb(58 104 69 / var(--tw-text-opacity));
 }
 
 .sidenote-mark {
@@ -1387,7 +1387,7 @@ a.taxonomy:hover .count {
   .sidenote-mark {
     cursor: pointer;
     text-decoration-line: underline;
-    text-decoration-color: #54875f;
+    text-decoration-color: #3a6845;
     text-decoration-style: dotted;
     text-decoration-thickness: 2px;
     text-underline-offset: 4px;
@@ -1536,7 +1536,7 @@ a.taxonomy:hover .count {
   padding: 0.5rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
-  color: #54875f;
+  color: #3a6845;
   background-color: #1a1b26;
 }
 
@@ -1584,7 +1584,7 @@ h2 {
   font-family: 'SourceSerif4', serif;
   font-weight: 650 !important;
   font-variant:small-caps;
-  color: #5d7263;
+  color: #4a5e50;
 }
 
 h3 {
@@ -1592,8 +1592,8 @@ h3 {
 }
 
 main#maincontent.prose.prose-slate {
-  --tw-prose-bullets: #5d7263;
-  --tw-prose-counters: #5d7263;
+  --tw-prose-bullets: #4a5e50;
+  --tw-prose-counters: #4a5e50;
 }
 
 main#maincontent.prose.prose-slate
@@ -1676,7 +1676,7 @@ main#maincontent.prose.prose-slate
 
 .post-hero__lead .sidenote:hover .sidenote-mark::after,
   .post-hero__lead .sidenote:hover .sidenote-content::before {
-  color: #54875f;
+  color: #3a6845;
 }
 
 .post-hero__lead .sidenote:active {
@@ -1684,16 +1684,16 @@ main#maincontent.prose.prose-slate
 }
 
 .post-hero__lead .sidenote:active .sidenote-content {
-  color: #54875f;
+  color: #3a6845;
 }
 
 @media not all and (min-width: 1024px) {
   .post-hero__lead .sidenote-checkbox:checked ~ .sidenote-content {
-    color: #54875f;
+    color: #3a6845;
   }
 
   .post-hero__lead .sidenote-checkbox:checked ~ .sidenote-mark {
-    color: #54875f;
+    color: #3a6845;
   }
 }
 
@@ -1706,7 +1706,7 @@ main#maincontent.prose.prose-slate
 .post-hero__rule {
   width: 1px;
   min-height: 100%;
-  background-color: #e6d9cc;
+  background-color: #b7d1c7;
 }
 
 .post-hero__head {

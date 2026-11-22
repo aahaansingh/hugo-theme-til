@@ -45,7 +45,7 @@
     /* serif fallback avoids system sans when SourceSerif4 fails to load (phone vs desktop engines). */
     font-family: 'SourceSerif4', serif;
     counter-reset: sidenote-counter;
-    background-color: #faf1e8;
+    background-color: #ceeadf;
   }
 
   nav a.active {
@@ -72,19 +72,19 @@
     font-size: 0.875rem;
     line-height: 1.25rem;
     font-family: 'SourceSerif4', serif;
-    color: #5d7263;
+    color: #4a5e50;
   }
 
   article.main a {
-    color: #54875f !important;
+    color: #3a6845 !important;
     text-decoration-line: none;
-    border-inline-start-color: #5d7263 !important;
+    border-inline-start-color: #4a5e50 !important;
   }
 
   article.main a:hover {
     text-decoration-thickness: 2px;
     text-underline-offset: 2px;
-    color:#A7BCA4 !important;
+    color:#4a9a84 !important;
   }
 
   article.main .codeblock-meta a {
@@ -99,7 +99,7 @@
   article.main figure {
     img {
       @apply mb-0 border p-1;
-      border:#e6d9cc
+      border:#b7d1c7
     }
 
     figcaption {
@@ -119,19 +119,19 @@
     @apply inline-block whitespace-nowrap rounded-sm border border-slate-200 bg-slate-100 p-1 text-sm font-semibold lowercase no-underline;
     /* Horizontal gutter between chips only (avoids extra vertical space in the row). */
     @apply mx-0.5;
-    border:#f7f4f0;
-    background:#e6d9cc;
+    border:#d8e5e0;
+    background:#b7d1c7;
     color:#000000;
   }
 
   a.taxonomy:hover {
-    border:#f7f4f0;
+    border:#d8e5e0;
     background:#EBE5DC;
   }
 
   a.taxonomy .count {
     @apply relative -top-px rounded px-[3px] py-[1px] text-[10px] font-normal tabular-nums text-slate-500;
-    background: #D5C9BD;
+    background: #c8dcd3;
   }
 
   a.taxonomy:hover .count {
@@ -162,22 +162,22 @@
 
   .sidenote-checkbox:checked {
     &~.sidenote-content {
-      @apply max-lg:not-sr-only max-lg:left-auto max-lg:float-left max-lg:my-2 max-lg:block max-lg:min-w-full max-lg:pl-4 max-lg:text-[#54875f];
+      @apply max-lg:not-sr-only max-lg:left-auto max-lg:float-left max-lg:my-2 max-lg:block max-lg:min-w-full max-lg:pl-4 max-lg:text-[#3a6845];
     }
 
     &~.sidenote-mark {
-      @apply no-underline max-lg:text-[#54875f];
+      @apply no-underline max-lg:text-[#3a6845];
     }
   }
 
   .sidenote:active,
   .sidenote:active .sidenote-content {
-    @apply text-[#54875f];
+    @apply text-[#3a6845];
   }
 
   .sidenote:hover .sidenote-mark::after,
   .sidenote:hover .sidenote-content::before {
-    @apply text-[#54875f];
+    @apply text-[#3a6845];
   }
 
   .sidenote-mark {
@@ -186,7 +186,7 @@
       content: counter(sidenote-counter);
     }
 
-    @apply motion-safe:transition-all max-lg:cursor-pointer max-lg:underline max-lg:decoration-[#54875f] max-lg:decoration-dotted max-lg:decoration-2 max-lg:underline-offset-4;
+    @apply motion-safe:transition-all max-lg:cursor-pointer max-lg:underline max-lg:decoration-[#3a6845] max-lg:decoration-dotted max-lg:decoration-2 max-lg:underline-offset-4;
   }
 
   .sidenote-content {
@@ -203,7 +203,7 @@
   }
 
   .footnote-ref {
-    @apply align-super text-xs font-semibold motion-safe:transition-all max-lg:cursor-pointer max-lg:underline max-lg:decoration-[#54875f] max-lg:decoration-dotted max-lg:decoration-2 max-lg:underline-offset-4;
+    @apply align-super text-xs font-semibold motion-safe:transition-all max-lg:cursor-pointer max-lg:underline max-lg:decoration-[#3a6845] max-lg:decoration-dotted max-lg:decoration-2 max-lg:underline-offset-4;
 
     &:hover {
       @apply max-lg:underline-offset-4;
@@ -249,7 +249,7 @@
 
   .codeblock pre {
     @apply overflow-x-scroll rounded p-2 text-sm;
-    color: #54875f;
+    color: #3a6845;
     background-color: #1a1b26;
   }
 
@@ -300,7 +300,7 @@
     font-family: 'SourceSerif4', serif;
     font-weight: 650 !important;
     font-variant:small-caps;
-    color: #5d7263;
+    color: #4a5e50;
   }
 
   h3 {
@@ -308,8 +308,8 @@
   }
 
   main#maincontent.prose.prose-slate {
-    --tw-prose-bullets: #5d7263;
-    --tw-prose-counters: #5d7263;
+    --tw-prose-bullets: #4a5e50;
+    --tw-prose-counters: #4a5e50;
   }
 
   main#maincontent.prose.prose-slate
@@ -388,7 +388,7 @@
 
   .post-hero__lead .sidenote:hover .sidenote-mark::after,
   .post-hero__lead .sidenote:hover .sidenote-content::before {
-    color: #54875f;
+    color: #3a6845;
   }
 
   .post-hero__lead .sidenote:active {
@@ -396,16 +396,16 @@
   }
 
   .post-hero__lead .sidenote:active .sidenote-content {
-    color: #54875f;
+    color: #3a6845;
   }
 
   @media not all and (min-width: 1024px) {
     .post-hero__lead .sidenote-checkbox:checked ~ .sidenote-content {
-      color: #54875f;
+      color: #3a6845;
     }
 
     .post-hero__lead .sidenote-checkbox:checked ~ .sidenote-mark {
-      color: #54875f;
+      color: #3a6845;
     }
   }
 
@@ -418,7 +418,7 @@
   .post-hero__rule {
     width: 1px;
     min-height: 100%;
-    background-color: #e6d9cc;
+    background-color: #b7d1c7;
   }
 
   .post-hero__head {
