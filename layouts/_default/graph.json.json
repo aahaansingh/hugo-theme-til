@@ -20,6 +20,22 @@
   {{- range .Scratch.Get "outgoing" -}}
     {{- $outgoing = $outgoing | append .RelPermalink -}}
   {{- end -}}
-  {{- $graphDict = merge $graphDict ( dict .RelPermalink ( dict "in" $incoming "out" $outgoing ) ) -}}
+  {{- /* Auto-generated links: pages sharing at least one category AND at least one tag. */ -}}
+  {{- $self := . -}}
+  {{- $cats := apply (.Params.categories | default slice) "lower" "." -}}
+  {{- $tags := apply (.Params.tags | default slice) "lower" "." -}}
+  {{- $related := slice -}}
+  {{- if and $cats $tags -}}
+    {{- range $pages -}}
+      {{- if ne .RelPermalink $self.RelPermalink -}}
+        {{- $otherCats := apply (.Params.categories | default slice) "lower" "." -}}
+        {{- $otherTags := apply (.Params.tags | default slice) "lower" "." -}}
+        {{- if and $otherCats $otherTags (intersect $cats $otherCats) (intersect $tags $otherTags) -}}
+          {{- $related = $related | append .RelPermalink -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $graphDict = merge $graphDict ( dict .RelPermalink ( dict "in" $incoming "out" $outgoing "related" $related ) ) -}}
 {{- end -}}
 {{ jsonify (dict "indent" "  ") ( dict "pages" $pageDict "graph" $graphDict ) }}

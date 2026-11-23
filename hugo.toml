@@ -37,3 +37,7 @@ title = 'Today I Learned'
   [module.hugoVersion]
     extended = false
     min = "0.116.0"
+
+[params]
+  [params.home]
+    image = "images/pillow.svg"

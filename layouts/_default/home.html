@@ -1,8 +1,18 @@
 {{ define "main" }}
   <article class="main">
+    {{- with site.Params.home.image }}
+      <img
+        src="{{ . | relURL }}"
+        alt=""
+        width="1418"
+        height="1054"
+        class="not-prose mx-auto !mb-6 mt-0 block w-56 max-w-full md:w-72"
+        fetchpriority="high"
+      />
+    {{- end }}
     {{- with .Title }}
       <header>
-        <h1 class="!mb-1">{{ . }}</h1>
+        <h1 class="!mb-1 text-center">{{ . }}</h1>
       </header>
     {{ end -}}
     {{- with .Content }}
@@ -14,7 +24,7 @@
     {{- $posts := where site.RegularPages "Section" "posts" -}}
     {{- with $posts.Limit (int (default 3 site.Params.home.recentPostsLimit)) }}
       <section>
-        <h2>Recent posts</h2>
+        <h2 class="!mt-8 text-center">Recent posts</h2>
 
         {{ partial "posts/list.html" . }}
       </section>
@@ -25,7 +35,7 @@
     {{- $notes := where site.RegularPages "Section" "notes" -}}
     {{- with $notes.Limit (int (default 5 site.Params.home.recentNotesLimit)) }}
       <section>
-        <h2>Recent notes</h2>
+        <h2 class="text-center">Recent notes</h2>
 
         {{ partial "notes/list.html" . }}
       </section>

@@ -7,6 +7,12 @@ const NODE_MIN_SIZE = 4;
 const NODE_MAX_SIZE = 16;
 const NODE_FOCUS_SIZE = 8;
 
+/** Style for auto-generated links so they read as weaker than explicit backlinks. */
+const RELATED_EDGE_OPTIONS = {
+  dashes: [4, 4],
+  color: { color: '#5d7263', opacity: 0.4 }
+};
+
 export class PageNotFoundError extends Error {
   constructor(permalink: string) {
     super(`Page '${permalink}' not found in graph data`);
@@ -58,6 +64,36 @@ export default class Graph {
     return pageGraph.out.map((permalink) => this.page(permalink));
   }
 
+  relatedFor(permalink: Permalink): Page[] {
+    const pageGraph = this.graph.get(permalink);
+    if (!pageGraph?.related) {
+      return [];
+    }
+
+    return pageGraph.related.map((permalink) => this.page(permalink));
+  }
+
+  /**
+   * Adds undirected, dashed edges for auto-generated "related" links. Skips pairs that already
+   * have an explicit backlink (either direction) and pairs outside `allowed` when given.
+   */
+  private addRelatedEdges(edges: DataSet<Edge>, pages: Page[]) {
+    const seen = new Set<string>();
+    const key = (a: string, b: string) => (a < b ? `${a}|${b}` : `${b}|${a}`);
+    edges.forEach((e) => seen.add(key(String(e.from), String(e.to))));
+    const allowed = new Set(pages.map((p) => p.id));
+
+    pages.forEach((page) => {
+      this.relatedFor(page.permalink).forEach((other) => {
+        if (!allowed.has(other.id)) return;
+        const k = key(page.id, other.id);
+        if (seen.has(k)) return;
+        seen.add(k);
+        edges.add({ from: page.id, to: other.id, ...RELATED_EDGE_OPTIONS });
+      });
+    });
+  }
+
   dataForPage(permalink: Permalink): {
     nodes: DataSet<Node>;
     edges: DataSet<Edge>;
@@ -66,7 +102,12 @@ export default class Graph {
     const nodes = new DataSet<Node>();
     const edges = new DataSet<Edge>();
     const pages = [
-      ...new Set([page, ...this.incomingFor(permalink), ...this.outgoingFor(permalink)])
+      ...new Set([
+        page,
+        ...this.incomingFor(permalink),
+        ...this.outgoingFor(permalink),
+        ...this.relatedFor(permalink)
+      ])
     ];
 
     pages.forEach((p) => {
@@ -83,6 +124,8 @@ export default class Graph {
         }
       });
     });
+
+    this.addRelatedEdges(edges, pages);
 
     return { nodes, edges };
   }
@@ -105,7 +148,9 @@ export default class Graph {
       });
     }
 
+    // Node size reflects explicit backlinks only; related edges are added afterwards.
     this.scaleNodeSizes(nodes, this.calcInDegree(nodes, edges));
+    this.addRelatedEdges(edges, [...this.pages.values()]);
 
     return { nodes, edges };
   }

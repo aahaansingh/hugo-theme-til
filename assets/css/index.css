@@ -1089,6 +1089,11 @@ video {
   display: none;
 }
 
+:root {
+  --color-burgundy: #79052b;
+  --color-link: #437b51;
+}
+
 html {
   font-size: clamp(16px, 0.35vw + 14.5px, 19px);
 }
@@ -1097,11 +1102,15 @@ body {
   /* serif fallback avoids system sans when SourceSerif4 fails to load (phone vs desktop engines). */
   font-family: 'SourceSerif4', serif;
   counter-reset: sidenote-counter;
-  background-color: #ceeadf;
+  /* Base is slightly lighter than #d5eed5 so the grain overlay averages out to #d5eed5. */
+  background-color: #daf3da;
+  /* Paper grain: tiled SVG noise over the base color. Tweak the alpha row (0.35, -0.08) in the matrix to change strength. */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.42  0 0 0 0 0.35  0 0 0 0.35 -0.08'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 300px 300px;
 }
 
 nav a.active {
-  color: #550527;
+  color: var(--color-burgundy);
 }
 
 a:hover {
@@ -1130,9 +1139,13 @@ nav ul {
 }
 
 article.main a {
-  color: #3a6845 !important;
+  color: var(--color-link) !important;
   text-decoration-line: none;
   border-inline-start-color: #4a5e50 !important;
+}
+
+article.main .lead {
+  margin-bottom: 0.5em;
 }
 
 article.main a:hover {
@@ -1161,7 +1174,7 @@ article.main figure {
     padding: 0.25rem;
   }
   img {
-    border:#b7d1c7
+    border:#bdd6bd
   }
   figcaption {
     margin-top: 0.25rem;
@@ -1200,13 +1213,13 @@ a.taxonomy {
   /* Horizontal gutter between chips only (avoids extra vertical space in the row). */
   margin-left: 0.125rem;
   margin-right: 0.125rem;
-  border:#d8e5e0;
-  background:#b7d1c7;
+  border:#dfe9df;
+  background:#bdd6bd;
   color:#000000;
 }
 
 a.taxonomy:hover {
-  border:#d8e5e0;
+  border:#dfe9df;
   background:#EBE5DC;
 }
 
@@ -1224,7 +1237,7 @@ a.taxonomy .count {
   font-variant-numeric: var(--tw-ordinal) var(--tw-slashed-zero) var(--tw-numeric-figure) var(--tw-numeric-spacing) var(--tw-numeric-fraction);
   --tw-text-opacity: 1;
   color: rgb(100 116 139 / var(--tw-text-opacity));
-  background: #c8dcd3;
+  background: #cee1ce;
 }
 
 a.taxonomy:hover .count {
@@ -1324,8 +1337,7 @@ a.taxonomy:hover .count {
   }
   @media not all and (min-width: 1024px) {
     &~.sidenote-content {
-      --tw-text-opacity: 1;
-      color: rgb(58 104 69 / var(--tw-text-opacity));
+      color: var(--color-link);
     }
   }
   &~.sidenote-mark {
@@ -1333,22 +1345,19 @@ a.taxonomy:hover .count {
   }
   @media not all and (min-width: 1024px) {
     &~.sidenote-mark {
-      --tw-text-opacity: 1;
-      color: rgb(58 104 69 / var(--tw-text-opacity));
+      color: var(--color-link);
     }
   }
 }
 
 .sidenote:active,
   .sidenote:active .sidenote-content {
-  --tw-text-opacity: 1;
-  color: rgb(58 104 69 / var(--tw-text-opacity));
+  color: var(--color-link);
 }
 
 .sidenote:hover .sidenote-mark::after,
   .sidenote:hover .sidenote-content::before {
-  --tw-text-opacity: 1;
-  color: rgb(58 104 69 / var(--tw-text-opacity));
+  color: var(--color-link);
 }
 
 .sidenote-mark {
@@ -1387,7 +1396,7 @@ a.taxonomy:hover .count {
   .sidenote-mark {
     cursor: pointer;
     text-decoration-line: underline;
-    text-decoration-color: #3a6845;
+    text-decoration-color: var(--color-link);
     text-decoration-style: dotted;
     text-decoration-thickness: 2px;
     text-underline-offset: 4px;
@@ -1536,7 +1545,7 @@ a.taxonomy:hover .count {
   padding: 0.5rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
-  color: #3a6845;
+  color: var(--color-link);
   background-color: #1a1b26;
 }
 
@@ -1570,14 +1579,14 @@ footer a:hover {
   font-family: 'YoungSerif', serif;
   font-weight: 700;
   font-style: italic;
-  color: #550527;
+  color: var(--color-burgundy);
   font-size: 1.2em;
 }
 
 h1 {
   font-family: 'YoungSerif', serif;
   font-weight: 700;
-  color: #550527;
+  color: var(--color-burgundy);
 }
 
 h2 {
@@ -1676,7 +1685,7 @@ main#maincontent.prose.prose-slate
 
 .post-hero__lead .sidenote:hover .sidenote-mark::after,
   .post-hero__lead .sidenote:hover .sidenote-content::before {
-  color: #3a6845;
+  color: var(--color-link);
 }
 
 .post-hero__lead .sidenote:active {
@@ -1684,16 +1693,16 @@ main#maincontent.prose.prose-slate
 }
 
 .post-hero__lead .sidenote:active .sidenote-content {
-  color: #3a6845;
+  color: var(--color-link);
 }
 
 @media not all and (min-width: 1024px) {
   .post-hero__lead .sidenote-checkbox:checked ~ .sidenote-content {
-    color: #3a6845;
+    color: var(--color-link);
   }
 
   .post-hero__lead .sidenote-checkbox:checked ~ .sidenote-mark {
-    color: #3a6845;
+    color: var(--color-link);
   }
 }
 
@@ -1706,7 +1715,7 @@ main#maincontent.prose.prose-slate
 .post-hero__rule {
   width: 1px;
   min-height: 100%;
-  background-color: #b7d1c7;
+  background-color: #bdd6bd;
 }
 
 .post-hero__head {
@@ -2608,6 +2617,14 @@ main#maincontent.prose.prose-slate
   margin-bottom: 5rem !important;
 }
 
+.\!mb-6 {
+  margin-bottom: 1.5rem !important;
+}
+
+.\!mt-8 {
+  margin-top: 2rem !important;
+}
+
 .mb-6 {
   margin-bottom: 1.5rem;
 }
@@ -2696,12 +2713,20 @@ main#maincontent.prose.prose-slate
   width: 83.333333%;
 }
 
+.w-56 {
+  width: 14rem;
+}
+
 .w-full {
   width: 100%;
 }
 
 .max-w-\[85ch\] {
   max-width: 85ch;
+}
+
+.max-w-full {
+  max-width: 100%;
 }
 
 .max-w-none {
@@ -3258,6 +3283,10 @@ main#maincontent.prose.prose-slate
 
   .md\:flex {
     display: flex;
+  }
+
+  .md\:w-72 {
+    width: 18rem;
   }
 
   .md\:justify-end {

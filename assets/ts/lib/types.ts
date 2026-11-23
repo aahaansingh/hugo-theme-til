@@ -16,6 +16,8 @@ export interface PageData {
 export interface PageGraph {
   in: Permalink[];
   out: Permalink[];
+  /** Auto-generated: pages sharing at least one category and one tag. */
+  related?: Permalink[];
 }
 
 export interface GraphData {
