@@ -1,4 +1,5 @@
 @import 'chroma.css';
+@import 'dropcaps.css';
 
 @tailwind base;
 @tailwind components;
@@ -22,6 +23,14 @@
 
 @font-face {
   font-display: swap;
+  font-family: 'Spectral';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../fonts/Spectral-SemiBold.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
   font-family: 'YoungSerif';
   font-style: normal;
   font-weight: 400;
@@ -40,6 +49,9 @@
   :root {
     --color-burgundy: #79052b;
     --color-link: #437b51;
+    /* small-caps face; to go back to Source Serif use: 'SourceSerif4', serif  and weight 650 */
+    --font-smallcaps: 'Spectral', 'SourceSerif4', serif;
+    --weight-smallcaps: 600;
   }
 
   html {
@@ -92,6 +104,8 @@
 
   article.main .lead {
     margin-bottom: 0.5em;
+    /* same green-black as the post hero lead paragraphs */
+    color: #2f3932;
   }
 
   article.main a:hover {
@@ -310,9 +324,12 @@
   }
 
   h2 {
-    font-family: 'SourceSerif4', serif;
-    font-weight: 650 !important;
+    font-family: var(--font-smallcaps);
+    font-weight: var(--weight-smallcaps) !important;
     font-variant:small-caps;
+    /* real small-caps glyphs (smcp);
+       never fake them from the fallback font while the web font is still loading */
+    font-synthesis-small-caps: none;
     color: #4a5e50;
   }
 
@@ -355,9 +372,10 @@
   .post-hero__lead :where(h2, h3, h4, h5, h6) {
     margin-top: 0;
     margin-bottom: 0;
-    font-family: 'SourceSerif4', serif;
-    font-weight: 650 !important;
+    font-family: var(--font-smallcaps);
+    font-weight: var(--weight-smallcaps) !important;
     font-variant: small-caps;
+    font-synthesis-small-caps: none;
     color: #2f3932;
   }
 
@@ -426,6 +444,44 @@
     .post-hero__lead p {
       font-size: 1.125em;
     }
+  }
+
+  /*
+   * Engraved drop cap, set after Bringhurst. Per-letter sizes and the stepped shape-outside
+   * polygons (text mortised against the letter line by line) are generated into
+   * dropcaps.css by scripts/build-dropcaps.py for exactly this line-height, so do not change
+   * --dc-lh without rebuilding. The letter is an SVG used as a CSS mask, so it takes the text
+   * colour; the real letter stays in the DOM as .sr-only text.
+   */
+  .dc-para {
+    --dc-lh: 1.7777778;
+    display: flow-root;
+    line-height: var(--dc-lh);
+  }
+
+  .dc {
+    float: left;
+    /* three lines, less a hair so the line below is never pushed in */
+    height: 5.293em;
+  }
+
+  .dc-glyph {
+    display: block;
+    /* put the cap-top of the letter on the cap-top of line 1 (body font: baseline 1.2394em,
+       cap height 0.67em in a 1.7778em line box) */
+    margin-top: 0.5694em;
+    background: currentColor;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+  }
+
+  /* run-in after the initial: real small caps, a little tracked */
+  .runin {
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.08em;
+    font-synthesis-small-caps: none;
   }
 
   .post-hero__rule {

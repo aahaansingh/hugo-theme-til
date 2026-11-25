@@ -70,7 +70,11 @@
         {{- end }}
       </header>
 
-      {{ .Content }}
+      {{- if eq .Section "notes" }}
+        {{ partial "notes/dropcap.html" .Content }}
+      {{- else }}
+        {{ .Content }}
+      {{- end }}
     {{- end -}}
   </article>
 

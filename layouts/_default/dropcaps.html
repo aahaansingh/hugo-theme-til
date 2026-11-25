@@ -1,0 +1,50 @@
+{{- /*
+  Specimen page: every drop cap in context, through the same partial the notes use.
+  Add `layout: dropcaps` to a page's front matter to use it (see content/dropcaps-sample.md).
+*/ -}}
+{{ define "main" }}
+  {{- /* letter -> a word that begins with it (J and U use the I and V plates) */ -}}
+  {{- $words := slice
+    (dict "k" "A" "w" "Ancient")   (dict "k" "B" "w" "Between")   (dict "k" "C" "w" "Compositors")
+    (dict "k" "D" "w" "Dividing")  (dict "k" "E" "w" "Every")     (dict "k" "F" "w" "Founders")
+    (dict "k" "G" "w" "Gradually") (dict "k" "H" "w" "Handsetting") (dict "k" "I" "w" "Initials")
+    (dict "k" "J" "w" "Just")      (dict "k" "K" "w" "Knowing")   (dict "k" "L" "w" "Letterforms")
+    (dict "k" "M" "w" "Margins")   (dict "k" "N" "w" "Nothing")   (dict "k" "O" "w" "Often")
+    (dict "k" "P" "w" "Printers")  (dict "k" "Q" "w" "Quires")    (dict "k" "R" "w" "Readers")
+    (dict "k" "S" "w" "Setting")   (dict "k" "T" "w" "Typefounders") (dict "k" "U" "w" "Under")
+    (dict "k" "V" "w" "Very")      (dict "k" "W" "w" "Where")     (dict "k" "X" "w" "Xylographers")
+    (dict "k" "Y" "w" "Yet")       (dict "k" "Z" "w" "Zealous")
+  -}}
+  {{- $tail := ", as the old printers knew, has to read as one word: the engraved capital opens it, the small capitals carry the eye across, and the lower case takes over. Where the capital begins a longer word the gap closes up, so that nobody reads an ornament and a stranded fragment where there is one word." -}}
+  {{- /* initials that are words in their own right */ -}}
+  {{- $singles := slice
+    (dict "k" "A" "t" "A compositor setting this page by hand would leave a full word space after the capital, because the letter is itself a word, and then carry on in small capitals for a few words before the lower case begins in earnest. The test is simple: read the first line aloud.")
+    (dict "k" "I" "t" "I think the engraved capital should read as part of the text, not as an ornament set beside it. Where the letter is itself a word, as here, a full word space follows; where it begins a longer word, the gap closes up. The test is simple: read the first line aloud.")
+    (dict "k" "O" "t" "O reader, the engraved capital is a word here as well as a letter, so the text keeps a full word space from it and then continues in small capitals. The test is simple: read the first line aloud, and see whether the eye is carried across the gap or stopped by it.")
+  -}}
+
+  <article class="main">
+    <header>
+      <h1 class="!mb-1">{{ .Title }}</h1>
+    </header>
+    {{ .Content }}
+
+    <h2>Beginning a word</h2>
+    {{- range $words }}
+      <h3 class="!mb-2 !mt-10 text-base">{{ .k }}{{ if eq .k "J" }} <span class="font-normal">(I plate)</span>{{ end }}{{ if eq .k "U" }} <span class="font-normal">(V plate)</span>{{ end }}</h3>
+      {{ partial "notes/dropcap.html" (printf "<p>%s%s</p>" .w $tail) }}
+    {{- end }}
+
+    <h2 class="!mt-16">A word on its own</h2>
+    {{- range $singles }}
+      <h3 class="!mb-2 !mt-10 text-base">{{ .k }}</h3>
+      {{ partial "notes/dropcap.html" (printf "<p>%s</p>" .t) }}
+    {{- end }}
+
+    <h2 class="!mt-16">Left plain</h2>
+    <h3 class="!mb-2 !mt-10 text-base">Contraction</h3>
+    {{ partial "notes/dropcap.html" "<p>I’ve written about this before, and the engraved capital would leave a stray fragment behind it, so contractions like this one are set plainly without an initial, however long the paragraph runs on and on after it, in the way that real paragraphs sometimes do.</p>" }}
+    <h3 class="!mb-2 !mt-10 text-base">Too short</h3>
+    {{ partial "notes/dropcap.html" "<p>A paragraph this short would not fill the three lines the initial needs.</p>" }}
+  </article>
+{{ end }}

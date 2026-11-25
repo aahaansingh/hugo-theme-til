@@ -247,6 +247,8 @@ tags
 
 /content/*
 !/content/graph.md
+!/content/dropcaps-sample.md
 .vscode
 .gitignore
 STYLE_AND_CLASS_INDEX.md
+.cache-dropcaps/
