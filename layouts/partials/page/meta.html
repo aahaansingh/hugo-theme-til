@@ -11,10 +11,8 @@
   {{- $outgoingNotes = where . "Section" "notes" -}}
   {{- $outgoingPosts = where . "Section" "posts" -}}
 {{- end -}}
-{{- $relatedPosts := where (.Site.RegularPages.Related .) "Section" "posts" | first 5 -}}
-{{- $relatedNotes := where (.Site.RegularPages.Related .) "Section" "notes" | first 5 -}}
-{{- $postsCount := add ( len $incomingPosts ) ( len $outgoingPosts ) ( len $relatedPosts ) -}}
-{{- $notesCount := add ( len $incomingNotes ) ( len $outgoingNotes ) ( len $relatedNotes ) -}}
+{{- $postsCount := add ( len $incomingPosts ) ( len $outgoingPosts ) -}}
+{{- $notesCount := add ( len $incomingNotes ) ( len $outgoingNotes ) -}}
 <aside class="not-prose flex flex-col space-y-8 border-t pt-6">
   {{- with .GetTerms "categories" }}
     <section class="flex flex-col space-y-4">
@@ -23,7 +21,7 @@
         <span>Categories</span>
       </h2>
 
-      <ul class="ml-6 flex flex-row flex-wrap items-center gap-2">
+      <ul class="ml-6 flex flex-row flex-wrap items-center gap-x-3 gap-y-2">
         {{- range . }}
           <li>
             <a href="{{ .RelPermalink }}" class="taxonomy category">{{ .Name }}</a>
@@ -40,7 +38,7 @@
         <span>Tags</span>
       </h2>
 
-      <ul class="not-prose ml-6 flex flex-row flex-wrap items-center gap-2">
+      <ul class="not-prose ml-6 flex flex-row flex-wrap items-center gap-x-3 gap-y-2">
         {{- range . }}
           <li>
             <a href="{{ .RelPermalink }}" class="taxonomy tag">{{ .Name }}</a>
@@ -90,16 +88,6 @@
         </section>
       {{- end }}
 
-      {{- with $relatedPosts }}
-        <section class="flex flex-col space-y-1">
-          <h3 class="flex flex-row items-center space-x-2 text-sm font-semibold">
-            {{ partial "svg/approximate-equals" }}
-            <span>Related</span>
-          </h3>
-
-          {{ partial "page/list" ( dict "pages" . "class" "ml-6" ) }}
-        </section>
-      {{- end }}
     </section>
   {{- end }}
 
@@ -132,16 +120,6 @@
         </section>
       {{- end }}
 
-      {{- with $relatedNotes }}
-        <section class="flex flex-col space-y-1">
-          <h3 class="flex flex-row items-center space-x-2 text-sm font-semibold">
-            {{ partial "svg/approximate-equals" }}
-            <span>Related</span>
-          </h3>
-
-          {{ partial "page/list" ( dict "pages" . "class" "ml-6" ) }}
-        </section>
-      {{- end }}
     </section>
   {{- end }}
 </aside>

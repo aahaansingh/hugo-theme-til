@@ -1,0 +1,71 @@
+{{- /*
+  Comments (Waline, self-hosted client in static/waline/). Rendered under posts and notes only,
+  after the page meta block, when the site sets:
+
+    [params.comments]
+      serverURL = "https://your-waline-server.example"   # required; no serverURL = no comments
+      lang = "en"                                        # optional
+
+  A page opts out with `comments: false` in its front matter. The client (about 290 KB) is
+  fetched only when the reader scrolls near the section. Comments are stored per page path
+  (the page's RelPermalink), so renaming a page's URL detaches its comments.
+  Email is optional and, in Waline, never sent to the browser: it is only visible in the admin.
+  (Values inside <script> are JS-escaped and quoted by Hugo itself, so no jsonify.)
+*/ -}}
+{{- $page := . -}}
+{{- with (site.Params.comments).serverURL -}}
+  {{- if ne $page.Params.comments false -}}
+    <section id="comments" class="not-prose mt-10 border-t pt-6">
+      <h2 class="text-lg font-semibold">Comments</h2>
+      <div id="waline" class="mt-4"></div>
+      <noscript><p class="text-sm">Comments need JavaScript.</p></noscript>
+    </section>
+    <script>
+      (() => {
+        const section = document.getElementById('comments');
+        if (!section) return;
+        const load = async () => {
+          const css = document.createElement('link');
+          css.rel = 'stylesheet';
+          css.href = {{ "waline/waline.css" | relURL }};
+          document.head.appendChild(css);
+          const { init } = await import({{ "waline/waline.js" | relURL }});
+          init({
+            el: '#waline',
+            serverURL: {{ . }},
+            path: {{ $page.RelPermalink }},
+            lang: {{ (site.Params.comments).lang | default "en" }},
+            dark: false,
+            meta: ['nick', 'mail'],
+            requiredMeta: ['nick'],
+            login: 'enable',
+            emoji: false,
+            imageUploader: false,
+            search: false,
+            reaction: false,
+            pageview: false,
+            comment: false,
+            pageSize: 10,
+            locale: {
+              placeholder: 'Leave a comment. New comments are reviewed before they appear.',
+              nick: 'Name',
+              mail: 'Email',
+              optional: 'optional, kept private',
+            },
+          });
+        };
+        if (!('IntersectionObserver' in window)) return load();
+        const io = new IntersectionObserver(
+          (entries) => {
+            if (entries.some((e) => e.isIntersecting)) {
+              io.disconnect();
+              load();
+            }
+          },
+          { rootMargin: '400px' }
+        );
+        io.observe(section);
+      })();
+    </script>
+  {{- end -}}
+{{- end -}}

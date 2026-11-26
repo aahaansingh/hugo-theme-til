@@ -5,7 +5,7 @@
   {{- $noop := .Content -}}
   {{- $pageDict = merge $pageDict ( dict .RelPermalink ( dict
     "permalink" .RelPermalink
-    "title" ( .Title | plainify | htmlUnescape | chomp | title )
+    "title" ( .Title | plainify | htmlUnescape | chomp )
     "section" .Section
     )
     )

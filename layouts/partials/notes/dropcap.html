@@ -17,8 +17,14 @@
   letter exists in data/dropcaps.json. J uses the I plate and U the V plate, as the classical
   alphabet has neither. Otherwise the content is returned untouched.
 */ -}}
+{{- /* Input is either the content string (notes: min length from params.notes.dropcapMinChars,
+       default 200) or a dict {content, minChars} (posts' hero lead passes its own, default 135). */ -}}
 {{- $content := . -}}
 {{- $minChars := int (default 200 (site.Params.notes).dropcapMinChars) -}}
+{{- if reflect.IsMap . -}}
+  {{- $content = .content -}}
+  {{- $minChars = int .minChars -}}
+{{- end -}}
 {{- $firstP := "" -}}
 {{- with findRE `(?s)^\s*<p(?:\s[^>]*)?>.*?</p>` $content 1 }}{{ $firstP = index . 0 }}{{ end -}}
 {{- $len := strings.RuneCount ($firstP | plainify | htmlUnescape | chomp) -}}

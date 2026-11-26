@@ -9,11 +9,11 @@
     {{- if $split -}}
       <div class="post-hero not-prose mb-6 md:mb-8">
         <div class="post-hero__lead">
-          {{ $leadHTML | safeHTML }}
+          {{ partial "notes/dropcap.html" (dict "content" $leadHTML "minChars" (default 135 (site.Params.posts).dropcapMinChars)) }}
         </div>
         <div class="post-hero__rule" aria-hidden="true"></div>
         <header class="post-hero__head">
-          <h1 class="!mb-1 mt-0">{{ .Title | title }}</h1>
+          <h1 class="!mb-1 mt-0">{{ .Title }}</h1>
           {{- with .Date }}
             {{- $dateMachine := . | time.Format "2006-01-02T15:04:05-07:00" -}}
             {{- $dateHuman := . | time.Format (default ":date_long" site.Params.dateFormat) -}}
@@ -43,7 +43,7 @@
       </div>
     {{- else -}}
       <header>
-        <h1 class="!mb-1">{{ .Title | title }}</h1>
+        <h1 class="!mb-1">{{ .Title }}</h1>
 
         {{- with .Date }}
           {{- $dateMachine := . | time.Format "2006-01-02T15:04:05-07:00" -}}
@@ -80,5 +80,6 @@
 
   {{- if or (eq .Section "posts") (eq .Section "notes") }}
     {{ partial "page/meta" . }}
+    {{ partial "comments.html" . }}
   {{- end }}
 {{ end }}

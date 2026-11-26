@@ -38,6 +38,12 @@ title = 'Today I Learned'
     extended = false
     min = "0.116.0"
 
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.parser]
+      [markup.goldmark.parser.attribute]
+        block = true
+
 [params]
   [params.home]
     image = "images/pillow.svg"

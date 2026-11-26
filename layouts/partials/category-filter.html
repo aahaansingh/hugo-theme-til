@@ -1,0 +1,33 @@
+{{- /*
+  "See all categories" dropdown for a section index: one chip per category used in the section,
+  with its page count, sorted by count (most used first) then alphabetically.
+  Input: dict "section" (e.g. "notes") and "param" (the site.Params key that can hide it, e.g. "notes").
+*/ -}}
+{{- $section := .section -}}
+{{- $items := slice -}}
+{{- range $name, $taxonomy := site.Taxonomies.categories -}}
+  {{- $count := 0 -}}
+  {{- range $taxonomy.Pages -}}
+    {{- if eq .Section $section }}{{ $count = add $count 1 }}{{ end -}}
+  {{- end -}}
+  {{- if gt $count 0 -}}
+    {{- $items = $items | append (dict "name" $name "url" $taxonomy.Page.RelPermalink "count" $count) -}}
+  {{- end -}}
+{{- end -}}
+{{- /* sort is stable: alphabetical first, then by count descending keeps ties alphabetical */ -}}
+{{- $items = sort (sort $items "name") "count" "desc" -}}
+{{- if $items }}
+  <details class="not-prose">
+    <summary class="cursor-pointer">See all categories</summary>
+    <ul class="mt-2 flex flex-row flex-wrap gap-2">
+      {{- range $items }}
+        <li>
+          <a href="{{ .url }}" class="taxonomy">
+            <span>{{ .name }}</span>
+            <span class="count">{{ .count }}</span>
+          </a>
+        </li>
+      {{- end }}
+    </ul>
+  </details>
+{{- end }}

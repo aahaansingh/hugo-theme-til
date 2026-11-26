@@ -1,0 +1,5 @@
+@waline/client 3.16.2 (MIT) - dist/waline.js and dist/waline.css, copied unmodified from
+https://cdn.jsdelivr.net/npm/@waline/client@3.16.2/dist/
+sha256 waline.js  4d59a26e66f97a08691aed9f96310f77d3f3dace69e42de276f7fe3dffde198d
+sha256 waline.css 9e418af7d3a507f6c4add97932ed728cd08a81693934f677c75143c726523976
+To update: download the new dist files, replace these two, and update this note.

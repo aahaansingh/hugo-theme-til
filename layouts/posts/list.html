@@ -17,6 +17,12 @@
   {{ .Content }}
 
   <div class="flex flex-col space-y-8">
+    <aside class="relative -mb-5 flex flex-col space-y-1">
+      {{- if default true site.Params.posts.showCategoryFilter }}
+        {{ partial "category-filter.html" (dict "section" "posts") }}
+      {{- end }}
+    </aside>
+
     {{ $pages := where site.RegularPages "Section" "posts" }}
     {{ $pager := .Paginate ($pages.GroupByDate "2006") 20 }}
 
@@ -31,6 +37,5 @@
     {{- if gt $pager.TotalPages 1 }}
       {{ partial "pagination.html" . }}
     {{- end }}
-  </section>
   </div>
 {{ end }}

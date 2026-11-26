@@ -3,15 +3,20 @@ import Graph from '../lib/Graph';
 import { GraphData } from '../lib/types';
 
 /** Palette: hex values already used in assets/css/main.css and list partials. */
+/** Link green (--color-link). 3.6:1 on the graph's tan box, enough for graphics (3:1). */
+const LINK = '#437b51';
+/** Darker link green for hover; the teal link-hover colour is under 3:1 on tan, so it isn't used here. */
+const LINK_HOVER = '#2f5639';
+
 const NETWORK_OPTIONS: Options = {
   nodes: {
     shape: 'dot',
     color: {
-      background: '#5d7263',
+      background: LINK,
       border: '#f7f4f0',
       hover: {
-        background: '#54875f',
-        border: '#54875f'
+        background: LINK_HOVER,
+        border: LINK_HOVER
       }
     },
     font: {
@@ -26,8 +31,8 @@ const NETWORK_OPTIONS: Options = {
   },
   edges: {
     color: {
-      color: '#5d7263',
-      hover: '#54875f'
+      color: LINK,
+      hover: LINK_HOVER
     },
     hoverWidth: 0,
     smooth: false

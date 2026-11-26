@@ -1,5 +1,6 @@
 @import 'chroma.css';
 @import 'dropcaps.css';
+@import 'dropcaps-hero.css';
 
 @tailwind base;
 @tailwind components;
@@ -23,14 +24,6 @@
 
 @font-face {
   font-display: swap;
-  font-family: 'Spectral';
-  font-style: normal;
-  font-weight: 600;
-  src: url('../fonts/Spectral-SemiBold.woff2') format('woff2');
-}
-
-@font-face {
-  font-display: swap;
   font-family: 'YoungSerif';
   font-style: normal;
   font-weight: 400;
@@ -43,6 +36,14 @@
   font-style: italic;
   font-weight: 400;
   src: url('../fonts/YoungSerif-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Spectral';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../fonts/Spectral-SemiBold.woff2') format('woff2');
 }
 
 @layer base {
@@ -143,17 +144,13 @@
   }
 
   a.taxonomy {
-    @apply inline-block whitespace-nowrap rounded-sm border border-slate-200 bg-slate-100 p-1 text-sm font-semibold lowercase no-underline;
-    /* Horizontal gutter between chips only (avoids extra vertical space in the row). */
-    @apply mx-0.5;
-    border:#dfe9df;
-    background:#bdd6bd;
-    color:#000000;
+    @apply inline-block whitespace-nowrap rounded-sm p-1 text-sm font-semibold lowercase no-underline;
+    background: #bdd6bd;
+    color: #000000;
   }
 
   a.taxonomy:hover {
-    border:#dfe9df;
-    background:#EBE5DC;
+    background: #EBE5DC;
   }
 
   a.taxonomy .count {
@@ -164,6 +161,32 @@
   a.taxonomy:hover .count {
     @apply text-slate-600;
     background: #C9BEB3;
+  }
+
+  /* Comments (Waline v3): remap its variables onto the site palette. The #comments prefix beats
+     Waline's own [data-waline] rule, so load order does not matter. (--waline-white stays white:
+     it is the text colour on the primary button.) */
+  #comments [data-waline] {
+    --waline-font-size: 1rem;
+    --waline-bg-color: rgb(255 255 255 / 0.35);
+    --waline-bg-color-light: transparent;
+    --waline-bg-color-hover: rgb(255 255 255 / 0.5);
+    --waline-border-color: #bdd6bd;
+    --waline-border: 1px solid #bdd6bd;
+    --waline-color: #334155;
+    --waline-theme-color: var(--color-link);
+    --waline-active-color: #2f5639;
+    --waline-info-bg-color: transparent;
+    --waline-info-color: #4a5e50;
+    --waline-box-shadow: none;
+    --waline-avatar-size: 2.5rem;
+    font-family: inherit;
+  }
+
+  /* our own "Comments" heading is above the box; drop Waline's count/sort row */
+  #comments .wl-count,
+  #comments .wl-sort {
+    display: none;
   }
 
   .pagination {
@@ -477,11 +500,22 @@
     mask-size: 100% 100%;
   }
 
+  /*
+   * Drop cap inside the post hero lead: the lead keeps its own 1.55 line-height, and
+   * dropcaps-hero.css (scripts/build-dropcaps.py --from-cache --lh 1.55 --scope .post-hero__lead)
+   * holds the plate sizes and text wraps built for that leading, scoped to override dropcaps.css.
+   */
+
   /* run-in after the initial: real small caps, a little tracked */
   .runin {
     font-variant-caps: all-small-caps;
     letter-spacing: 0.08em;
     font-synthesis-small-caps: none;
+  }
+
+  /* post hero lead: slightly tighter tracking than the notes (0.08em - 0.02em) */
+  .post-hero__lead .runin {
+    letter-spacing: 0.06em;
   }
 
   .post-hero__rule {

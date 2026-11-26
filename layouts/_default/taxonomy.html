@@ -1,9 +1,11 @@
 {{ define "main" }}
-  <div class="flex flex-col space-y-6">
+  <h1>{{ .Title }}</h1>
+
+  <div class="flex flex-col space-y-6 [&>section:first-child>h2]:!mt-8">
     {{- $posts := where .RegularPages "Section" "posts" -}}
     {{ with $posts }}
       <section>
-        <h2>Posts on {{ $.Title }}</h2>
+        <h2 class="text-center">Recent posts</h2>
 
         {{ partial "posts/list.html" . }}
       </section>
@@ -11,7 +13,7 @@
     {{- $notes := where .RegularPages "Section" "notes" -}}
     {{ with $notes }}
       <section>
-        <h2>Notes on {{ $.Title }}</h2>
+        <h2 class="text-center">Recent notes</h2>
 
         {{ partial "notes/list.html" . }}
       </section>

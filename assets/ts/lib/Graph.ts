@@ -10,7 +10,7 @@ const NODE_FOCUS_SIZE = 8;
 /** Style for auto-generated links so they read as weaker than explicit backlinks. */
 const RELATED_EDGE_OPTIONS = {
   dashes: [4, 4],
-  color: { color: '#5d7263', opacity: 0.4 }
+  color: { color: '#437b51', opacity: 0.4 }
 };
 
 export class PageNotFoundError extends Error {
