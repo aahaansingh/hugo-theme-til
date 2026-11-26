@@ -50,7 +50,7 @@ const NETWORK_OPTIONS: Options = {
 const FADED_NODE_OPTIONS: NodeOptions = {
   color: {
     background: '#f7f4f0',
-    border: '#e6d9cc'
+    border: '#f2e3d4'
   },
   font: {
     color: '#5d7263'
@@ -152,7 +152,7 @@ export default class ContentNetworkGraph extends HTMLElement {
       'rounded-sm',
       'block',
       'border-[#f7f4f0]',
-      'bg-[#e6d9cc]'
+      'bg-[#f2e3d4]'
     );
     this._networkEl = document.createElement('div');
     this._messageEl = document.createElement('div');

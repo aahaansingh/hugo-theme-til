@@ -49,8 +49,10 @@
             locale: {
               placeholder: 'Leave a comment. New comments are reviewed before they appear.',
               nick: 'Name',
-              mail: 'Email',
-              optional: 'optional, kept private',
+              // trailing space so Waline's appended "(optional)" reads "Email (optional)"
+              mail: 'Email ',
+              optional: 'optional',
+              sofa: 'No comments yet.',
             },
           });
         };

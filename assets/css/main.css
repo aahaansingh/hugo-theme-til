@@ -116,7 +116,7 @@
   }
 
   article.main .codeblock-meta a {
-    color: #e6d9cc !important;
+    color: #f2e3d4 !important;
   }
 
   article.main .codeblock-meta a:hover {
@@ -168,11 +168,12 @@
      it is the text colour on the primary button.) */
   #comments [data-waline] {
     --waline-font-size: 1rem;
-    --waline-bg-color: rgb(255 255 255 / 0.35);
+    /* same tan and border as the graph box (ContentNetworkGraph.ts) */
+    --waline-bg-color: #f2e3d4;
     --waline-bg-color-light: transparent;
-    --waline-bg-color-hover: rgb(255 255 255 / 0.5);
-    --waline-border-color: #bdd6bd;
-    --waline-border: 1px solid #bdd6bd;
+    --waline-bg-color-hover: #f7ece2;
+    --waline-border-color: #f7f4f0;
+    --waline-border: 1px solid #f7f4f0;
     --waline-color: #334155;
     --waline-theme-color: var(--color-link);
     --waline-active-color: #2f5639;
@@ -181,6 +182,72 @@
     --waline-box-shadow: none;
     --waline-avatar-size: 2.5rem;
     font-family: inherit;
+  }
+
+  /* form controls do not inherit the page font by default */
+  #comments input,
+  #comments textarea,
+  #comments button {
+    font-family: inherit;
+  }
+
+  /* name / email entries (Waline's own size is 0.625em, too small) */
+  #comments input {
+    font-size: 0.9375rem;
+  }
+
+  /* stack the name and email rows at every width (Waline only does it under 580px), with labels
+     the same size as the entries and a fixed width so both inputs line up */
+  #comments .wl-header {
+    display: block;
+  }
+
+  #comments .wl-header-item {
+    width: 100%;
+  }
+
+  #comments .wl-header-item:not(:last-child) {
+    border-bottom: 2px dashed var(--waline-border-color);
+  }
+
+  #comments .wl-header label {
+    flex: none;
+    width: 8.5rem;
+    min-width: 0;
+    padding: 0.6em 0.75em;
+    font-size: 0.9375rem;
+    text-align: start;
+  }
+
+  /* hide each comment's location / browser / OS tags (.wl-meta). This only hides them on the
+     page: also set DISABLE_REGION and DISABLE_USERAGENT on the Waline server so they are not
+     sent at all. */
+  #comments .wl-meta {
+    display: none;
+  }
+
+  /* footer RSS links: swap Waline's orange icon for the site's (Lucide "rss", the same paths as
+     partials/svg/rss.html), in the colours the site uses for its RSS icon (slate-300, orange on hover) */
+  #comments .wl-rss > a {
+    color: #cbd5e1;
+  }
+
+  #comments .wl-rss > a:hover {
+    color: #ea580c;
+  }
+
+  #comments .wl-rss > a > svg {
+    display: none;
+  }
+
+  #comments .wl-rss > a::before {
+    content: '';
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    background: currentColor;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16'/%3E%3Ccircle cx='5' cy='19' r='1'/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16'/%3E%3Ccircle cx='5' cy='19' r='1'/%3E%3C/svg%3E") center / contain no-repeat;
   }
 
   /* our own "Comments" heading is above the box; drop Waline's count/sort row */
