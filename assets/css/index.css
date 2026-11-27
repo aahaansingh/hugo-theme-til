@@ -1964,6 +1964,13 @@ video {
 :root {
   --color-burgundy: #79052b;
   --color-link: #437b51;
+  /* inline backlinks: a little lighter than the burgundy accents, lighter again on hover */
+  --color-backlink: #8c0833;
+  --color-backlink-hover: #b61046;
+  /* cream (graph box, comment box, tag hover) and the darker creams that sit on top of it */
+  --color-cream: #f4f1e5;
+  --color-cream-dark: #dcd9ce;
+  --color-cream-darker: #d1cfc4;
   /* small-caps face; to go back to Source Serif use: 'SourceSerif4', serif  and weight 650 */
   --font-smallcaps: 'Spectral', 'SourceSerif4', serif;
   --weight-smallcaps: 600;
@@ -1977,8 +1984,8 @@ body {
   /* serif fallback avoids system sans when SourceSerif4 fails to load (phone vs desktop engines). */
   font-family: 'SourceSerif4', serif;
   counter-reset: sidenote-counter;
-  /* Base is slightly lighter than #d5eed5 so the grain overlay averages out to #d5eed5. */
-  background-color: #daf3da;
+  /* Base is slightly lighter than #e3f2e3 so the grain overlay averages out to #e3f2e3. */
+  background-color: #e8f7e8;
   /* Paper grain: tiled SVG noise over the base color. Tweak the alpha row (0.35, -0.08) in the matrix to change strength. */
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.42  0 0 0 0 0.35  0 0 0 0.35 -0.08'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 300px 300px;
@@ -2032,7 +2039,7 @@ article.main a:hover {
 }
 
 article.main .codeblock-meta a {
-  color: #f2e3d4 !important;
+  color: var(--color-cream) !important;
 }
 
 article.main .codeblock-meta a:hover {
@@ -2051,7 +2058,7 @@ article.main figure {
     padding: 0.25rem;
   }
   img {
-    border:#bdd6bd
+    border:#cadbca
   }
   figcaption {
     margin-top: 0.25rem;
@@ -2082,12 +2089,12 @@ a.taxonomy {
   font-weight: 600;
   text-transform: lowercase;
   text-decoration-line: none;
-  background: #bdd6bd;
+  background: #cadbca;
   color: #000000;
 }
 
 a.taxonomy:hover {
-  background: #EBE5DC;
+  background: var(--color-cream);
 }
 
 a.taxonomy .count {
@@ -2104,13 +2111,13 @@ a.taxonomy .count {
   font-variant-numeric: var(--tw-ordinal) var(--tw-slashed-zero) var(--tw-numeric-figure) var(--tw-numeric-spacing) var(--tw-numeric-fraction);
   --tw-text-opacity: 1;
   color: rgb(100 116 139 / var(--tw-text-opacity));
-  background: #cee1ce;
+  background: #dbe6db;
 }
 
 a.taxonomy:hover .count {
   --tw-text-opacity: 1;
   color: rgb(71 85 105 / var(--tw-text-opacity));
-  background: #C9BEB3;
+  background: var(--color-cream-darker);
 }
 
 /* Comments (Waline v3): remap its variables onto the site palette. The #comments prefix beats
@@ -2119,12 +2126,12 @@ a.taxonomy:hover .count {
 
 #comments [data-waline] {
   --waline-font-size: 1rem;
-  /* same tan and border as the graph box (ContentNetworkGraph.ts) */
-  --waline-bg-color: #f2e3d4;
+  /* same cream and border as the graph box (ContentNetworkGraph.ts) */
+  --waline-bg-color: var(--color-cream);
   --waline-bg-color-light: transparent;
-  --waline-bg-color-hover: #f7ece2;
-  --waline-border-color: #f7f4f0;
-  --waline-border: 1px solid #f7f4f0;
+  --waline-bg-color-hover: #ebe8dc;
+  --waline-border-color: var(--color-cream-dark);
+  --waline-border: 1px solid var(--color-cream-dark);
   --waline-color: #334155;
   --waline-theme-color: var(--color-link);
   --waline-active-color: #2f5639;
@@ -2204,6 +2211,78 @@ a.taxonomy:hover .count {
   background: currentColor;
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16'/%3E%3Ccircle cx='5' cy='19' r='1'/%3E%3C/svg%3E") center / contain no-repeat;
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16'/%3E%3Ccircle cx='5' cy='19' r='1'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* Box geometry. Radius matches the graph box (0.375rem); buttons match the tag chips (rounded-sm).
+     The box sits at the same indent and width as the graph box (#waline has ml-6, like the graph).
+     Name label, email label, comment text and toolbar all start 1rem in, so they are flush. */
+
+#comments .wl-panel {
+  margin: 0;
+  border-radius: 0.375rem;
+}
+
+#comments .wl-header {
+  padding: 0;
+  border-radius: 0.375rem 0.375rem 0 0;
+}
+
+#comments .wl-header label {
+  padding-inline: 1rem 0;
+}
+
+#comments .wl-editor {
+  width: 100%;
+  margin: 0.75em 0;
+  padding: 0 1rem;
+}
+
+#comments .wl-footer {
+  margin: 0.5em 1rem;
+}
+
+/* Logged in: Waline puts the avatar + name in a column left of the box, and the box touches it.
+     Lay it out like the comment cards below (card padding .5em, avatar, .75em gap) so the box's
+     left edge lines up with the cards' text, and keep the name inside the avatar's width. */
+
+#comments .wl-comment {
+  padding-inline-start: 0.5em;
+}
+
+#comments .wl-login-info {
+  flex: none;
+  width: var(--waline-avatar-size);
+  max-width: none;
+  margin-inline-end: 0.75em;
+}
+
+#comments .wl-login-info .wl-login-nick {
+  width: calc(var(--waline-avatar-size) + 0.75em);
+  margin-inline-start: -0.375em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.7em;
+}
+
+@media (max-width: 720px) {
+  #comments .wl-login-info {
+    width: var(--waline-m-avatar-size);
+  }
+}
+
+/* Waline's bundled "autosize" sizes the textarea to its text and sets overflow:hidden inline.
+     When it measures too early (for example when an edit box opens with the old text already in
+     it), the rest of the text is cut off and can't be reached. Cap the height and always allow
+     scrolling; !important is needed to beat the inline overflow:hidden. */
+
+#comments .wl-editor {
+  max-height: 70vh;
+  overflow-y: auto !important;
+}
+
+#comments .wl-btn {
+  border-radius: 0.125rem;
 }
 
 /* our own "Comments" heading is above the box; drop Waline's count/sort row */
@@ -2572,6 +2651,8 @@ h3 {
 
 main#maincontent.prose.prose-slate {
   --tw-prose-bullets: #4a5e50;
+  /* image captions: slate-500 is quite blue; this is a more neutral grey */
+  --tw-prose-captions: #666a70;
   --tw-prose-counters: #4a5e50;
 }
 
@@ -2721,6 +2802,22 @@ main#maincontent.prose.prose-slate
    * holds the plate sizes and text wraps built for that leading, scoped to override dropcaps.css.
    */
 
+/* hero drop cap: a touch darker than the burgundy accents */
+
+.post-hero__lead .dc-glyph {
+  background: #710327;
+}
+
+/* inline backlinks (the backlink shortcode): light burgundy, lighter on hover */
+
+article.main a.backlink {
+  color: var(--color-backlink) !important;
+}
+
+article.main a.backlink:hover {
+  color: var(--color-backlink-hover) !important;
+}
+
 /* run-in after the initial: real small caps, a little tracked */
 
 .runin {
@@ -2738,7 +2835,7 @@ main#maincontent.prose.prose-slate
 .post-hero__rule {
   width: 1px;
   min-height: 100%;
-  background-color: #bdd6bd;
+  background-color: #cadbca;
 }
 
 .post-hero__head {
@@ -3958,6 +4055,10 @@ main#maincontent.prose.prose-slate
   border-radius: 0.25rem;
 }
 
+.rounded-md {
+  border-radius: 0.375rem;
+}
+
 .rounded-sm {
   border-radius: 0.125rem;
 }
@@ -3982,9 +4083,9 @@ main#maincontent.prose.prose-slate
   border-top-width: 1px;
 }
 
-.border-\[\#f7f4f0\] {
+.border-\[\#dcd9ce\] {
   --tw-border-opacity: 1;
-  border-color: rgb(247 244 240 / var(--tw-border-opacity));
+  border-color: rgb(220 217 206 / var(--tw-border-opacity));
 }
 
 .border-neutral-100 {
@@ -3996,19 +4097,19 @@ main#maincontent.prose.prose-slate
   background-color: inherit !important;
 }
 
-.bg-\[\#EBE5DC\] {
+.bg-\[\#e9e6da\] {
   --tw-bg-opacity: 1;
-  background-color: rgb(235 229 220 / var(--tw-bg-opacity));
+  background-color: rgb(233 230 218 / var(--tw-bg-opacity));
 }
 
-.bg-\[\#f2e3d4\] {
+.bg-\[\#f4f1e5\] {
   --tw-bg-opacity: 1;
-  background-color: rgb(242 227 212 / var(--tw-bg-opacity));
+  background-color: rgb(244 241 229 / var(--tw-bg-opacity));
 }
 
-.bg-\[\#faf1e8\] {
+.bg-\[\#faf8f2\] {
   --tw-bg-opacity: 1;
-  background-color: rgb(250 241 232 / var(--tw-bg-opacity));
+  background-color: rgb(250 248 242 / var(--tw-bg-opacity));
 }
 
 .bg-gray-200 {

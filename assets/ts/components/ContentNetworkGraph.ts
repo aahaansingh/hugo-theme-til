@@ -13,7 +13,7 @@ const NETWORK_OPTIONS: Options = {
     shape: 'dot',
     color: {
       background: LINK,
-      border: '#f7f4f0',
+      border: '#faf8f2',
       hover: {
         background: LINK_HOVER,
         border: LINK_HOVER
@@ -49,8 +49,8 @@ const NETWORK_OPTIONS: Options = {
 
 const FADED_NODE_OPTIONS: NodeOptions = {
   color: {
-    background: '#f7f4f0',
-    border: '#f2e3d4'
+    background: '#faf8f2',
+    border: '#dcd9ce'
   },
   font: {
     color: '#5d7263'
@@ -149,10 +149,10 @@ export default class ContentNetworkGraph extends HTMLElement {
     this.classList.add(
       'relative',
       'border',
-      'rounded-sm',
+      'rounded-md',
       'block',
-      'border-[#f7f4f0]',
-      'bg-[#f2e3d4]'
+      'border-[#dcd9ce]',
+      'bg-[#f4f1e5]'
     );
     this._networkEl = document.createElement('div');
     this._messageEl = document.createElement('div');
@@ -244,7 +244,7 @@ export default class ContentNetworkGraph extends HTMLElement {
       'space-x-2',
       'items-center',
       'absolute',
-      'bg-[#faf1e8]',
+      'bg-[#faf8f2]',
       'w-full',
       'h-full',
       'text-lg',
@@ -284,8 +284,8 @@ export default class ContentNetworkGraph extends HTMLElement {
     expandBtn.classList.add(
       'border',
       'rounded-sm',
-      'border-[#f7f4f0]',
-      'bg-[#EBE5DC]',
+      'border-[#dcd9ce]',
+      'bg-[#e9e6da]',
       'p-1',
       'opacity-60',
       'hover:opacity-100'
